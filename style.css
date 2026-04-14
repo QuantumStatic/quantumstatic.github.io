@@ -188,6 +188,10 @@ body {
   font-size:  0.875rem;
 }
 
+.skill-value {
+  color: var(--text);
+}
+
 /* ── Contact ────────────────────────────────────────── */
 .contact {
   padding:    3rem 0 4rem;
