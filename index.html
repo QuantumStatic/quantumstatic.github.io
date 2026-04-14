@@ -107,5 +107,14 @@
     </div>
   </footer>
 
+  <script>
+    const header = document.querySelector('.site-header');
+    const heroName = document.querySelector('.hero h1');
+    const observer = new IntersectionObserver(
+      ([entry]) => header.classList.toggle('visible', !entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(heroName);
+  </script>
 </body>
 </html>

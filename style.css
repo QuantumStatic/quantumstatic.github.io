@@ -41,12 +41,20 @@ body {
   top:         0;
   background:  var(--bg);
   border-bottom: 1px solid var(--border);
-  padding:     1rem 2rem;
+  padding:     0.6rem 2rem;
   z-index:     10;
+  opacity:     0;
+  pointer-events: none;
+  transition:  opacity 200ms ease;
+}
+
+.site-header.visible {
+  opacity:        1;
+  pointer-events: auto;
 }
 
 .site-name {
-  font-size:       0.875rem;
+  font-size:       0.75rem;
   font-weight:     600;
   color:           var(--text);
   text-decoration: none;
