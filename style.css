@@ -1,0 +1,224 @@
+/* ── Reset ─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Tokens ─────────────────────────────────────────── */
+:root {
+  --bg:         #FAFAFA;
+  --text:       #1A1A1A;
+  --muted:      #6B7280;
+  --accent:     #2563EB;
+  --border:     #E5E7EB;
+  --max-width:  680px;
+  --font:       'Inter', system-ui, sans-serif;
+}
+
+/* ── Base ───────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:              var(--bg);
+  color:                   var(--text);
+  font-family:             var(--font);
+  font-size:               16px;
+  line-height:             1.65;
+  -webkit-font-smoothing:  antialiased;
+}
+
+/* ── Site header ────────────────────────────────────── */
+.site-header {
+  position:    sticky;
+  top:         0;
+  background:  var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding:     1rem 2rem;
+  z-index:     10;
+}
+
+.site-name {
+  font-size:       0.875rem;
+  font-weight:     600;
+  color:           var(--text);
+  text-decoration: none;
+  letter-spacing:  -0.01em;
+}
+
+.site-name:hover { color: var(--accent); }
+
+/* ── Container ──────────────────────────────────────── */
+.container {
+  max-width: var(--max-width);
+  margin:    0 auto;
+  padding:   0 2rem;
+}
+
+/* ── Section label ──────────────────────────────────── */
+.section-label {
+  font-size:      0.7rem;
+  font-weight:    600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color:          var(--muted);
+  margin-bottom:  1.5rem;
+}
+
+/* ── Hero ───────────────────────────────────────────── */
+.hero {
+  padding: 5rem 0 3rem;
+}
+
+.hero h1 {
+  font-size:     2.75rem;
+  font-weight:   700;
+  letter-spacing: -0.03em;
+  line-height:   1.1;
+  margin-bottom: 0.5rem;
+}
+
+.hero .title {
+  font-size:     1.125rem;
+  color:         var(--muted);
+  font-weight:   400;
+  margin-bottom: 1rem;
+}
+
+.hero .tagline {
+  font-size:   1.125rem;
+  font-weight: 500;
+  color:       var(--text);
+}
+
+/* ── About ──────────────────────────────────────────── */
+.about {
+  padding:    3rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.about p {
+  font-size:   1rem;
+  line-height: 1.75;
+}
+
+/* ── Experience ─────────────────────────────────────── */
+.experience {
+  padding:    3rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.role { margin-bottom: 2.5rem; }
+.role:last-child { margin-bottom: 0; }
+
+.role-header {
+  display:         flex;
+  justify-content: space-between;
+  align-items:     baseline;
+  margin-bottom:   0.15rem;
+}
+
+.role-company {
+  font-weight: 600;
+  font-size:   1rem;
+}
+
+.role-period {
+  font-size: 0.8rem;
+  color:     var(--muted);
+}
+
+.role-title {
+  font-size:     0.875rem;
+  color:         var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.role ul {
+  list-style: none;
+  padding:    0;
+}
+
+.role ul li {
+  font-size:     0.9375rem;
+  line-height:   1.65;
+  padding-left:  1rem;
+  position:      relative;
+  margin-bottom: 0.4rem;
+}
+
+.role ul li::before {
+  content:  '—';
+  position: absolute;
+  left:     0;
+  color:    var(--muted);
+  font-size: 0.8rem;
+}
+
+/* ── Skills ─────────────────────────────────────────── */
+.skills {
+  padding:    3rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.skill-row {
+  display:       flex;
+  gap:           1.5rem;
+  padding:       0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size:     0.9375rem;
+}
+
+.skill-row:last-child { border-bottom: none; }
+
+.skill-label {
+  width:      120px;
+  flex-shrink: 0;
+  color:      var(--muted);
+  font-size:  0.875rem;
+}
+
+/* ── Contact ────────────────────────────────────────── */
+.contact {
+  padding:    3rem 0 4rem;
+  border-top: 1px solid var(--border);
+  display:    flex;
+  align-items: center;
+  gap:        0.75rem;
+}
+
+.contact a {
+  font-size:       0.9375rem;
+  color:           var(--text);
+  text-decoration: none;
+  font-weight:     500;
+}
+
+.contact a:hover { color: var(--accent); }
+
+.dot {
+  color:       var(--border);
+  user-select: none;
+}
+
+/* ── Mobile ─────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .container  { padding: 0 1.25rem; }
+
+  .hero       { padding: 3rem 0 2rem; }
+  .hero h1    { font-size: 2rem; }
+
+  .role-header {
+    flex-direction: column;
+    gap:            0.1rem;
+  }
+
+  .skill-row {
+    flex-direction: column;
+    gap:            0.25rem;
+  }
+
+  .skill-label { width: auto; }
+}
