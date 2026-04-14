@@ -9,7 +9,7 @@
 :root {
   --bg:         #FAFAFA;
   --text:       #1A1A1A;
-  --muted:      #6B7280;
+  --muted:      #5D6572;
   --accent:     #2563EB;
   --border:     #E5E7EB;
   --max-width:  680px;
@@ -21,6 +21,10 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
 body {
   background:              var(--bg);
   color:                   var(--text);
@@ -28,6 +32,7 @@ body {
   font-size:               16px;
   line-height:             1.65;
   -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ── Site header ────────────────────────────────────── */
@@ -46,9 +51,12 @@ body {
   color:           var(--text);
   text-decoration: none;
   letter-spacing:  -0.01em;
+  transition:      color 150ms ease;
 }
 
 .site-name:hover { color: var(--accent); }
+
+.site-name:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* ── Container ──────────────────────────────────────── */
 .container {
@@ -59,7 +67,7 @@ body {
 
 /* ── Section label ──────────────────────────────────── */
 .section-label {
-  font-size:      0.7rem;
+  font-size:      0.75rem;
   font-weight:    600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -187,6 +195,7 @@ body {
   display:    flex;
   align-items: center;
   gap:        0.75rem;
+  flex-wrap:  wrap;
 }
 
 .contact a {
@@ -194,9 +203,12 @@ body {
   color:           var(--text);
   text-decoration: none;
   font-weight:     500;
+  transition:      color 150ms ease;
 }
 
 .contact a:hover { color: var(--accent); }
+
+.contact a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 .dot {
   color:       var(--border);
