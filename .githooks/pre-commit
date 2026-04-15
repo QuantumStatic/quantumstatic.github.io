@@ -11,5 +11,5 @@ set -e
 echo "→ Running build-photos…"
 node scripts/build-photos.js
 
-# Re-stage anything the script may have changed
+# Re-stage anything the script may have changed (photos, videos, metadata, HTML)
 git add assets/photos/ assets/profile-picture/ index.html

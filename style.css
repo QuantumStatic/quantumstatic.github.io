@@ -201,6 +201,15 @@ body {
   color:       var(--muted);
 }
 
+/* ── Column titles ──────────────────────────────────── */
+.column-title {
+  font-size:      1.5rem;
+  font-weight:    700;
+  letter-spacing: -0.02em;
+  color:          var(--text);
+  padding:        3rem 0 2rem;
+}
+
 /* ── Experience ─────────────────────────────────────── */
 .experience {
   padding: 3rem 0;
@@ -404,7 +413,8 @@ body {
 /* Both children share the same grid cell */
 .photo-item > * { grid-area: 1 / 1; }
 
-.photo-item img {
+.photo-item img,
+.photo-item video {
   width:   100%;
   display: block;
 }
