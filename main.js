@@ -30,31 +30,9 @@ new IntersectionObserver(
 
 /* ── Mobile: collapsible "About me" and "Work" panels ──────────── */
 if (window.matchMedia('(max-width: 600px)').matches) {
-  [
-    { container: document.querySelector('.split-aside'), body: document.querySelector('.aside-body') },
-    { container: document.querySelector('.split-main'),  body: document.querySelector('.main-body')  },
-  ].forEach(({ container, body }) => {
-    const title = container.querySelector('.column-title');
-
-    title.addEventListener('click', () => {
-      const isCollapsed = container.classList.contains('collapsed');
-      if (isCollapsed) {
-        // Expand
-        container.classList.remove('collapsed');
-        body.style.height = body.scrollHeight + 'px';
-        body.style.overflow = 'hidden';
-        body.addEventListener('transitionend', () => {
-          body.style.height   = '';
-          body.style.overflow = '';
-        }, { once: true });
-      } else {
-        // Collapse
-        body.style.height   = body.scrollHeight + 'px';
-        body.offsetHeight;  // flush
-        body.style.overflow = 'hidden';
-        body.style.height   = '0';
-        container.classList.add('collapsed');
-      }
+  document.querySelectorAll('.split-aside, .split-main').forEach(container => {
+    container.querySelector('.column-title').addEventListener('click', () => {
+      container.classList.toggle('collapsed');
     });
   });
 }
