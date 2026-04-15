@@ -434,6 +434,13 @@ body {
   border-top: 1px solid var(--border);
 }
 
+.photos-label {
+  font-size:     0.9375rem;
+  font-style:    italic;
+  color:         var(--muted);
+  margin-bottom: 1.5rem;
+}
+
 .photo-grid {
   columns:    4;
   column-gap: 6px;
