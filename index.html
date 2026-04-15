@@ -73,27 +73,6 @@
       </div>
     </section>
 
-    <!-- Skills -->
-    <section class="skills" aria-labelledby="skills-heading">
-      <h2 id="skills-heading" class="section-label">Skills</h2>
-      <div class="skill-row">
-        <span class="skill-label">Languages</span>
-        <span class="skill-value">Python, C++, Java, TypeScript, JavaScript, SQL</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-label">AI / ML</span>
-        <span class="skill-value">LangGraph, LangChain, MCP, RAG, PyTorch, TensorFlow, HuggingFace, Pinecone</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-label">Cloud &amp; Infra</span>
-        <span class="skill-value">AWS, Docker, Kubernetes, Temporal</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-label">Full Stack</span>
-        <span class="skill-value">FastAPI, Flask, React.js, Node.js, PostgreSQL, MongoDB</span>
-      </div>
-    </section>
-
     <!-- Projects -->
     <section class="projects" aria-labelledby="projects-heading">
       <h2 id="projects-heading" class="section-label">Projects</h2>
@@ -416,6 +395,27 @@
 
     </section>
 
+    <!-- Skills -->
+    <section class="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading" class="section-label">Skills</h2>
+      <div class="skill-row">
+        <span class="skill-label">Languages</span>
+        <span class="skill-value">Python, C++, Java, TypeScript, JavaScript, SQL</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">AI / ML</span>
+        <span class="skill-value">LangGraph, LangChain, MCP, RAG, PyTorch, TensorFlow, HuggingFace, Pinecone</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Cloud &amp; Infra</span>
+        <span class="skill-value">AWS, Docker, Kubernetes, Temporal</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Full Stack</span>
+        <span class="skill-value">FastAPI, Flask, React.js, Node.js, PostgreSQL, MongoDB</span>
+      </div>
+    </section>
+
   </main>
 
   <!-- Contact -->
@@ -430,6 +430,7 @@
   </footer>
 
   <script>
+    // Sticky header
     const header = document.querySelector('.site-header');
     const heroName = document.querySelector('.hero h1');
     const observer = new IntersectionObserver(
@@ -437,6 +438,41 @@
       { threshold: 0 }
     );
     observer.observe(heroName);
+
+    // Animated project category expand/collapse
+    document.querySelectorAll('.project-category').forEach(details => {
+      const summary = details.querySelector('summary');
+      const content = details.querySelector('.category-projects');
+
+      summary.addEventListener('click', e => {
+        e.preventDefault();
+
+        if (details.open) {
+          // Collapse
+          content.style.height = content.scrollHeight + 'px';
+          requestAnimationFrame(() => {
+            content.style.height = '0';
+          });
+          content.addEventListener('transitionend', () => {
+            details.removeAttribute('open');
+            content.style.height = '';
+          }, { once: true });
+        } else {
+          // Expand
+          details.setAttribute('open', '');
+          const h = content.scrollHeight;
+          content.style.height = '0';
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              content.style.height = h + 'px';
+            });
+          });
+          content.addEventListener('transitionend', () => {
+            content.style.height = '';
+          }, { once: true });
+        }
+      });
+    });
   </script>
 </body>
 </html>
