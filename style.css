@@ -449,24 +449,25 @@ body {
 }
 
 .photo-item {
-  display:       grid;   /* stack img + figcaption in the same cell */
+  position:      relative;  /* contain the absolute overlay */
   break-inside:  avoid;
   margin-bottom: 6px;
   overflow:      hidden;
 }
 
-/* Both children share the same grid cell */
-.photo-item > * { grid-area: 1 / 1; }
-
 .photo-item img,
 .photo-item video {
   width:   100%;
+  height:  auto;
   display: block;
 }
 
 /* Hover overlay: location + date — pinned to bottom of the image */
 .photo-meta {
-  align-self:      end;   /* sits at the bottom of the shared cell */
+  position:        absolute;
+  bottom:          0;
+  left:            0;
+  right:           0;
   display:         flex;
   justify-content: space-between;
   align-items:     flex-end;
@@ -475,7 +476,7 @@ body {
   background:      linear-gradient(transparent, rgba(0, 0, 0, 0.55));
   opacity:         0;
   transition:      opacity 200ms ease;
-  pointer-events:  none;  /* don't block clicks on the image */
+  pointer-events:  none;
 }
 
 .photo-item:hover .photo-meta { opacity: 1; }
