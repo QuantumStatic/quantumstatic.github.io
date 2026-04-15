@@ -7,6 +7,18 @@
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/* ── Randomise photo grid ───────────────────────────────────────── */
+const photoGrid = document.querySelector('.photo-grid');
+if (photoGrid) {
+  const figures = [...photoGrid.querySelectorAll('.photo-item')];
+  // Fisher-Yates shuffle
+  for (let i = figures.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    photoGrid.appendChild(figures[j]);
+    [figures[i], figures[j]] = [figures[j], figures[i]];
+  }
+}
+
 /* ── Sticky header ──────────────────────────────────────────────── */
 const header   = document.querySelector('.site-header');
 const heroName = document.querySelector('.hero h1');
