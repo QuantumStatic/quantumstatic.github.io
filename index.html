@@ -19,449 +19,480 @@
         <ul>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#photos">Photos</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class="container">
+  <main>
 
-    <!-- Hero -->
-    <section class="hero">
-      <h1>Utkarsh Jain</h1>
-      <p class="title">Machine Learning Engineer</p>
-      <p class="tagline">I build production AI systems that work.</p>
-    </section>
-
-    <!-- About -->
-    <section class="about">
-      <p>I'm an MLE based in Brooklyn, NY, focused on LLMs, agentic systems, and RAG pipelines. I've shipped enterprise-grade AI in production — multimodal agents, document intelligence, and self-healing code systems — at startups moving fast. Outside of work, you'll find me on a badminton court, boxing, or on a bike.</p>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" class="experience" aria-labelledby="experience-heading">
-      <h2 id="experience-heading" class="section-label">Experience</h2>
-
-      <div class="role">
-        <div class="role-header">
-          <span class="role-company">Stealth Startup</span>
-          <span class="role-period">Oct 2025 – Present</span>
+    <!-- ① Hero — full width -->
+    <div class="layout">
+      <section class="hero">
+        <div class="hero-inner">
+          <h1>Utkarsh Jain</h1>
+          <p class="title">Machine Learning Engineer</p>
+          <p class="tagline">I build production AI systems that work.</p>
         </div>
-        <div class="role-title">Machine Learning Engineer &middot; New York, NY</div>
-        <ul>
-          <li>Built multimodal deep search agent using MCPs and reciprocal rank fusion to intelligently query client databases</li>
-          <li>Shipped report-writing agent generating 70+ page documents at 92% precision and recall</li>
-          <li>Deployed agentic workflows on Temporal and Kubernetes in production</li>
-        </ul>
-      </div>
+      </section>
+    </div>
 
-      <div class="role">
-        <div class="role-header">
-          <span class="role-company">Fileread</span>
-          <span class="role-period">Feb 2025 – Oct 2025</span>
+    <!-- ② Two-column split: left scrolls, right stays pinned -->
+    <div class="split-layout layout">
+
+      <!-- Left: Experience → Projects → Skills -->
+      <div class="split-main">
+
+        <!-- Experience -->
+        <section id="experience" class="experience" aria-labelledby="experience-heading">
+          <h2 id="experience-heading" class="section-label">Experience</h2>
+
+          <div class="role">
+            <div class="role-header">
+              <span class="role-company">Stealth Startup</span>
+              <span class="role-period">Oct 2025 – Present</span>
+            </div>
+            <div class="role-title">Machine Learning Engineer &middot; New York, NY</div>
+            <ul>
+              <li>Built multimodal deep search agent using MCPs and reciprocal rank fusion to intelligently query client databases</li>
+              <li>Shipped report-writing agent generating 70+ page documents at 92% precision and recall</li>
+              <li>Deployed agentic workflows on Temporal and Kubernetes in production</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <div class="role-header">
+              <span class="role-company">Fileread</span>
+              <span class="role-period">Feb 2025 – Oct 2025</span>
+            </div>
+            <div class="role-title">Machine Learning Engineer &middot; New York, NY</div>
+            <ul>
+              <li>Built a self-healing code agent with near-zero hallucinations using LangGraph</li>
+              <li>Engineered Matter Intelligence — a context engineering feature that reduced legal document review from weeks to hours</li>
+              <li>Built extraction engine converting unstructured legal documents into structured data with custom schemas</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <div class="role-header">
+              <span class="role-company">HSBC</span>
+              <span class="role-period">Jul 2021 – Mar 2022</span>
+            </div>
+            <div class="role-title">Industrial Placement Trainee &middot; Hong Kong</div>
+            <ul>
+              <li>Automated APAC portfolio management workflows in Python, saving ~200 man-hours</li>
+              <li>Revamped a legacy RPG API with Node.js and performed network load testing with JMeter</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="projects" aria-labelledby="projects-heading">
+          <h2 id="projects-heading" class="section-label">Projects</h2>
+
+          <!-- Machine Learning & AI -->
+          <details class="project-category">
+            <summary>
+              <div class="category-left">
+                <span class="category-name">Machine Learning &amp; AI</span>
+                <span class="category-count">11 projects</span>
+              </div>
+              <span class="category-arrow">&#9654;</span>
+            </summary>
+            <div class="category-projects">
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Deepfake Detection with Vision Transformer</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">Can an AI spot a face that was never real? Pitted two vision models head-to-head on a custom deepfake dataset to find out.</p>
+                <p class="project-summary">Fine-tuned ViT and DINO transformers on a custom deepfake dataset; controlled ablation across activations and dataset splits measuring accuracy, F1, and ROC-AUC.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">NYC Rental Price Predictor</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">The strongest predictor of NYC rent isn't bedrooms — it's bathrooms. Scraped StreetEasy and Zillow, pulled in census data, and let the model settle it.</p>
+                <p class="project-summary">End-to-end pipeline scraping StreetEasy + Zillow, merged with census data; XGBoost + NN regressors predicting NYC apartment prices.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Food Image Classifier — Transfer Learning + Kubernetes Auto-Scaling</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">Trained an AI to recognise food. Put it on the internet. Threw thousands of requests at it. Watched what broke — then scaled it.</p>
+                <p class="project-summary">Transfer learning on Food-11, deployed on Kubernetes with HPA, load-tested with Siege — full train-deploy-scale-observe loop.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Peer-to-Peer Energy Trading Market Simulation</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">What if your neighbour could buy your leftover solar power? Simulated the entire P2P market — with real scraped PV data, not synthetic numbers.</p>
+                <p class="project-summary">Multi-agent simulation of a P2P solar energy market with real scraped PV data, two iterative model versions.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Drone 3D Motion Planning with A*</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">Getting a drone across a city without hitting anything is harder than it looks. Built the path planner — and the logic that actually flies it.</p>
+                <p class="project-summary">A* path planning with multiple heuristics for autonomous drone navigation in a simulated urban environment.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Forest Type Classification — Decision Trees, Random Forest &amp; Naive Bayes</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">Eight different decision trees, all fully drawn out. Which satellite readings actually tell forests apart?</p>
+                <p class="project-summary">Multi-class classifier comparison with decision tree visualisations, feature importance, and hierarchical clustering.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Healthcare Stroke Risk Analysis via Clustering</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">Which patients look alike when you strip out the labels? Clustered a real stroke dataset two different ways — and the groupings disagreed.</p>
+                <p class="project-summary">Patient risk clustering on real healthcare stroke dataset using Euclidean and Jaccard similarity metrics.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">K-Means Clustering — From Scratch</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">Built a clustering algorithm from scratch, then raced it against the industry-standard version on the same data to prove it was right.</p>
+                <p class="project-summary">Custom K-Means implementation with correctness checks against sklearn and speed benchmarking.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">SVM Face Detection Classifier</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">A straight line or a curved one — which shape separates faces from not-faces better? Ran the experiment to find out.</p>
+                <p class="project-summary">Linear and kernel SVM classifiers trained for face patch detection.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Image Segmentation via Clustering</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">Treat every pixel as a dot. Group the dots that look alike. The image repaints itself in the process.</p>
+                <p class="project-summary">K-Means pixel clustering for image segmentation with visual comparison across different k values.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">News Article Popularity Predictor</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">What makes an article go viral on Mashable? Trained a model on 40,000 articles — turns out topic matters more than word count.</p>
+                <p class="project-summary">Regression models (Linear, Ridge, Random Forest) predicting Mashable article share counts.</p>
+              </div>
+            </div>
+          </details>
+
+          <!-- Computer Vision -->
+          <details class="project-category">
+            <summary>
+              <div class="category-left">
+                <span class="category-name">Computer Vision</span>
+                <span class="category-count">4 projects</span>
+              </div>
+              <span class="category-arrow">&#9654;</span>
+            </summary>
+            <div class="category-projects">
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Gesture-Controlled Ticket Counter with Face Authentication</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">Your face gets you in. Your fingers tell it what you want. No keyboard, no mouse — just you.</p>
+                <p class="project-summary">Python app using MediaPipe hand tracking and face recognition for touchless ticket counter interaction.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Content-Based Image Retrieval System</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">Find the most visually similar image in a database — without Google, without a neural net. Three retrieval strategies, one ranked output.</p>
+                <p class="project-summary">Multithreaded CBIR system with edge extraction, feature descriptors, and combined retrieval strategies.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Hand Gesture Image Editor (ml5.js HandPose)</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">The image starts fully blurred. Your hand reveals it.</p>
+                <p class="project-summary">JavaScript web app using ml5.js HandPose for real-time touchless image editing via webcam gestures.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Night Scene Object Recognition — DCGAN + Faster R-CNN</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">What if the detector can't see in the dark? Used one AI to brighten the image before the other AI looked at it.</p>
+                <p class="project-summary">Research study on using DCGAN image enhancement + Faster R-CNN for object detection in low-light conditions.</p>
+              </div>
+            </div>
+          </details>
+
+          <!-- Information Retrieval -->
+          <details class="project-category">
+            <summary>
+              <div class="category-left">
+                <span class="category-name">Information Retrieval</span>
+                <span class="category-count">4 projects</span>
+              </div>
+              <span class="category-arrow">&#9654;</span>
+            </summary>
+            <div class="category-projects">
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">BM25 Query Processor with C++20 Coroutine Generators</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">A search engine that sifts through 3.2 million documents — but only reads the ones it absolutely has to. The trick? Making C++ pretend it's Python.</p>
+                <p class="project-summary">C++20 coroutine-based lazy generator for streaming inverted lists; conjunctive merge and MaxScore pruning driven by compiler-managed coroutine state.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Cosine Dissimilarity Web Crawler</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">A web crawler that refuses to read pages saying the same thing — even when the URLs look completely different. It understands meaning, not just addresses.</p>
+                <p class="project-summary">SentenceTransformer embeddings used for near-duplicate filtering before pages enter the crawl frontier — semantically diverse crawl over URL-hash dedup.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Neural Search Pipeline with Embedding-Based Cluster Sharding</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">Why search the whole library when you can route the question to the one shelf that matters? Built the system that decides which shelf.</p>
+                <p class="project-summary">Dense embeddings &rarr; PCA &rarr; UMAP &rarr; 16-cluster sharding; queries routed to a single shard rather than scanning the full corpus.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Inverted Index Builder over MS MARCO (3.2M Docs)</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">Built a searchable index over 3.2 million documents in C++ — without ever loading more than a fraction of them into memory.</p>
+                <p class="project-summary">C++23 threshold-based intermediate dump-and-merge index construction over 3.2M MARCO documents; memory-bounded at any corpus size.</p>
+              </div>
+            </div>
+          </details>
+
+          <!-- Systems & Algorithms -->
+          <details class="project-category">
+            <summary>
+              <div class="category-left">
+                <span class="category-name">Systems &amp; Algorithms</span>
+                <span class="category-count">7 projects</span>
+              </div>
+              <span class="category-arrow">&#9654;</span>
+            </summary>
+            <div class="category-projects">
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Unix Shell Implementation in C++</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">What does a command prompt actually need to work? Built one from scratch — turns out it's mostly about where signals go when you hit Ctrl+C.</p>
+                <p class="project-summary">Full Unix shell with foreground/background process management, signal handling (SIGCHLD, SIGINT, SIGTSTP), and built-in commands.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Multithreaded Web Crawler &amp; Article Classifier</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">Five threads, thirteen article categories. It doesn't stop until every single category has been covered.</p>
+                <p class="project-summary">3 crawler + 1 classifier + 1 strategy manager threads synchronised with pthreads, semaphores, and mutexes.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">CPU Scheduler Simulator — FCFS, Round Robin &amp; Multilevel Feedback</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">CPU-hungry tasks sink to the bottom. Quick ones float to the top. Built three different strategies and watched them compete on the same workload.</p>
+                <p class="project-summary">C++ simulation of three scheduling algorithms with Gantt chart output and comparative performance analysis.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Data Structures Library from Scratch</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">Three different ways to keep a sorted list balanced as it grows — all built from the ground up, no shortcuts, no libraries.</p>
+                <p class="project-summary">Custom Python implementations of k-ary Heap, BST, Red-Black Tree, Splay Tree, and Treap from scratch.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">TCP Client-Server Application</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">Built a messaging protocol from scratch — just two computers talking to each other over a raw connection, one character at a time.</p>
+                <p class="project-summary">Python socket programming: full TCP client with POST/READ/QUIT protocol commands over raw sockets.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">MapReduce Word Count — Hadoop</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">The same program running across a thousand machines at once, counting words in millions of documents — and not a single line of code tells it how to split the work.</p>
+                <p class="project-summary">Canonical MapReduce Word Count in Java on Hadoop demonstrating distributed processing fundamentals.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Poker Hand Evaluator with JUnit Tests</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">A poker hand evaluator that works for any number of cards dealt — with tests covering every hand type and every edge case I could think of.</p>
+                <p class="project-summary">Java poker hand evaluator with JUnit 5 test suite covering all hand types and edge cases.</p>
+              </div>
+            </div>
+          </details>
+
+          <!-- Cloud & DevOps -->
+          <details class="project-category">
+            <summary>
+              <div class="category-left">
+                <span class="category-name">Cloud &amp; DevOps</span>
+                <span class="category-count">4 projects</span>
+              </div>
+              <span class="category-arrow">&#9654;</span>
+            </summary>
+            <div class="category-projects">
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">AWS Dining Concierge Chatbot</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">A restaurant recommendation chatbot — built entirely out of cloud services that only exist for the split second they're answering you.</p>
+                <p class="project-summary">Fully serverless restaurant chatbot: Lex v2 &rarr; 3 Lambdas &rarr; DynamoDB + ElasticSearch, seeded by a custom Yelp scraper.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Flask App on EKS with Prometheus Monitoring</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">Deployed a web app to the cloud — then gave it an alarm system that goes off the second anything misbehaves.</p>
+                <p class="project-summary">Flask + MongoDB on AWS EKS with Prometheus + Alertmanager observability stack and IRSA least-privilege access.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Serverless AI Photo Search (AWS Rekognition + OpenSearch)</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">Upload a photo of your dog. Search for 'dog'. It shows up. You never labelled it — the AI did.</p>
+                <p class="project-summary">S3 upload &rarr; Lambda &rarr; Rekognition auto-labels &rarr; OpenSearch index; fully event-driven keyword photo search.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Solar Consumer Data Web Scraper</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">Real solar data, not made up — pulled straight from a live consumer portal so the energy simulation wouldn't have to invent numbers.</p>
+                <p class="project-summary">Selenium scraper pulling real PV solar consumer data to feed the P2P energy market simulation.</p>
+              </div>
+            </div>
+          </details>
+
+          <!-- Full Stack & Databases -->
+          <details class="project-category">
+            <summary>
+              <div class="category-left">
+                <span class="category-name">Full Stack &amp; Databases</span>
+                <span class="category-count">4 projects</span>
+              </div>
+              <span class="category-arrow">&#9654;</span>
+            </summary>
+            <div class="category-projects">
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">ArtSync — Full-Stack Social Media App (MERN)</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">A full social media app — posts, follows, real-time chat — built and deployed end-to-end from scratch.</p>
+                <p class="project-summary">MERN social platform with real-time Socket.io chat, JWT auth, Cloudinary media, deployed on AWS Amplify.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">PDS — Full-Stack Food Pantry Platform</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">A food pantry app where the database itself enforces the rules — not the code wrapped around it.</p>
+                <p class="project-summary">Flask + React + PostgreSQL with SQL triggers and stored procedures keeping business logic inside the database layer.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">HotMeals Restaurant Management System</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">A restaurant booking and ordering system built like a real product — two versioned releases, bug reports, and a full test suite.</p>
+                <p class="project-summary">Full Java desktop app for restaurant booking, ordering, and payments — full SDLC with two releases.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">SQL Query Optimisation Study</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">The same query, ten times faster. Here's every optimisation step — and the evidence that each one actually helped.</p>
+                <p class="project-summary">Systematic EXPLAIN ANALYSE profiling with iterative indexing and query restructuring; measured speedup documented at each step.</p>
+              </div>
+            </div>
+          </details>
+
+        </section>
+
+        <!-- Skills -->
+        <section class="skills" aria-labelledby="skills-heading">
+          <h2 id="skills-heading" class="section-label">Skills</h2>
+          <div class="skill-row">
+            <span class="skill-label">Languages</span>
+            <span class="skill-value">Python, C++, Java, TypeScript, JavaScript, SQL</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-label">AI / ML</span>
+            <span class="skill-value">LangGraph, LangChain, MCP, RAG, PyTorch, TensorFlow, HuggingFace, Pinecone</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-label">Cloud &amp; Infra</span>
+            <span class="skill-value">AWS, Docker, Kubernetes, Temporal</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-label">Full Stack</span>
+            <span class="skill-value">FastAPI, Flask, React.js, Node.js, PostgreSQL, MongoDB</span>
+          </div>
+        </section>
+
+      </div><!-- /.split-main -->
+
+      <!-- Right: sticky identity panel -->
+      <aside class="split-aside">
+        <div class="identity-photo">
+          <!-- Replace src with real photo path when ready -->
+          <img src="" alt="Utkarsh Jain" />
         </div>
-        <div class="role-title">Machine Learning Engineer &middot; New York, NY</div>
-        <ul>
-          <li>Built a self-healing code agent with near-zero hallucinations using LangGraph</li>
-          <li>Engineered Matter Intelligence — a context engineering feature that reduced legal document review from weeks to hours</li>
-          <li>Built extraction engine converting unstructured legal documents into structured data with custom schemas</li>
-        </ul>
-      </div>
+        <p class="identity-bio">
+          I'm an MLE based in Brooklyn, NY, focused on LLMs, agentic systems, and RAG pipelines.
+          I've shipped enterprise-grade AI in production — multimodal agents, document intelligence,
+          and self-healing code systems — at startups moving fast. Outside of work, you'll find me
+          on a badminton court, boxing, or on a bike.
+        </p>
+      </aside>
 
-      <div class="role">
-        <div class="role-header">
-          <span class="role-company">HSBC</span>
-          <span class="role-period">Jul 2021 – Mar 2022</span>
-        </div>
-        <div class="role-title">Industrial Placement Trainee &middot; Hong Kong</div>
-        <ul>
-          <li>Automated APAC portfolio management workflows in Python, saving ~200 man-hours</li>
-          <li>Revamped a legacy RPG API with Node.js and performed network load testing with JMeter</li>
-        </ul>
-      </div>
-    </section>
+    </div><!-- /.split-layout -->
 
-    <!-- Projects -->
-    <section id="projects" class="projects" aria-labelledby="projects-heading">
-      <h2 id="projects-heading" class="section-label">Projects</h2>
-
-      <!-- Machine Learning & AI -->
-      <details class="project-category">
-        <summary>
-          <div class="category-left">
-            <span class="category-name">Machine Learning &amp; AI</span>
-            <span class="category-count">11 projects</span>
-          </div>
-          <span class="category-arrow">&#9654;</span>
-        </summary>
-        <div class="category-projects">
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Deepfake Detection with Vision Transformer</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">Can an AI spot a face that was never real? Pitted two vision models head-to-head on a custom deepfake dataset to find out.</p>
-            <p class="project-summary">Fine-tuned ViT and DINO transformers on a custom deepfake dataset; controlled ablation across activations and dataset splits measuring accuracy, F1, and ROC-AUC.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">NYC Rental Price Predictor</span>
-              <span class="project-institution">NYU</span>
-            </div>
-            <p class="project-hook">The strongest predictor of NYC rent isn't bedrooms — it's bathrooms. Scraped StreetEasy and Zillow, pulled in census data, and let the model settle it.</p>
-            <p class="project-summary">End-to-end pipeline scraping StreetEasy + Zillow, merged with census data; XGBoost + NN regressors predicting NYC apartment prices.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Food Image Classifier — Transfer Learning + Kubernetes Auto-Scaling</span>
-              <span class="project-institution">NYU</span>
-            </div>
-            <p class="project-hook">Trained an AI to recognise food. Put it on the internet. Threw thousands of requests at it. Watched what broke — then scaled it.</p>
-            <p class="project-summary">Transfer learning on Food-11, deployed on Kubernetes with HPA, load-tested with Siege — full train-deploy-scale-observe loop.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Peer-to-Peer Energy Trading Market Simulation</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">What if your neighbour could buy your leftover solar power? Simulated the entire P2P market — with real scraped PV data, not synthetic numbers.</p>
-            <p class="project-summary">Multi-agent simulation of a P2P solar energy market with real scraped PV data, two iterative model versions.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Drone 3D Motion Planning with A*</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">Getting a drone across a city without hitting anything is harder than it looks. Built the path planner — and the logic that actually flies it.</p>
-            <p class="project-summary">A* path planning with multiple heuristics for autonomous drone navigation in a simulated urban environment.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Forest Type Classification — Decision Trees, Random Forest &amp; Naive Bayes</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">Eight different decision trees, all fully drawn out. Which satellite readings actually tell forests apart?</p>
-            <p class="project-summary">Multi-class classifier comparison with decision tree visualisations, feature importance, and hierarchical clustering.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Healthcare Stroke Risk Analysis via Clustering</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">Which patients look alike when you strip out the labels? Clustered a real stroke dataset two different ways — and the groupings disagreed.</p>
-            <p class="project-summary">Patient risk clustering on real healthcare stroke dataset using Euclidean and Jaccard similarity metrics.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">K-Means Clustering — From Scratch</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">Built a clustering algorithm from scratch, then raced it against the industry-standard version on the same data to prove it was right.</p>
-            <p class="project-summary">Custom K-Means implementation with correctness checks against sklearn and speed benchmarking.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">SVM Face Detection Classifier</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">A straight line or a curved one — which shape separates faces from not-faces better? Ran the experiment to find out.</p>
-            <p class="project-summary">Linear and kernel SVM classifiers trained for face patch detection.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Image Segmentation via Clustering</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">Treat every pixel as a dot. Group the dots that look alike. The image repaints itself in the process.</p>
-            <p class="project-summary">K-Means pixel clustering for image segmentation with visual comparison across different k values.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">News Article Popularity Predictor</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">What makes an article go viral on Mashable? Trained a model on 40,000 articles — turns out topic matters more than word count.</p>
-            <p class="project-summary">Regression models (Linear, Ridge, Random Forest) predicting Mashable article share counts.</p>
-          </div>
-        </div>
-      </details>
-
-      <!-- Computer Vision -->
-      <details class="project-category">
-        <summary>
-          <div class="category-left">
-            <span class="category-name">Computer Vision</span>
-            <span class="category-count">4 projects</span>
-          </div>
-          <span class="category-arrow">&#9654;</span>
-        </summary>
-        <div class="category-projects">
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Gesture-Controlled Ticket Counter with Face Authentication</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">Your face gets you in. Your fingers tell it what you want. No keyboard, no mouse — just you.</p>
-            <p class="project-summary">Python app using MediaPipe hand tracking and face recognition for touchless ticket counter interaction.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Content-Based Image Retrieval System</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">Find the most visually similar image in a database — without Google, without a neural net. Three retrieval strategies, one ranked output.</p>
-            <p class="project-summary">Multithreaded CBIR system with edge extraction, feature descriptors, and combined retrieval strategies.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Hand Gesture Image Editor (ml5.js HandPose)</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">The image starts fully blurred. Your hand reveals it.</p>
-            <p class="project-summary">JavaScript web app using ml5.js HandPose for real-time touchless image editing via webcam gestures.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Night Scene Object Recognition — DCGAN + Faster R-CNN</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">What if the detector can't see in the dark? Used one AI to brighten the image before the other AI looked at it.</p>
-            <p class="project-summary">Research study on using DCGAN image enhancement + Faster R-CNN for object detection in low-light conditions.</p>
-          </div>
-        </div>
-      </details>
-
-      <!-- Information Retrieval -->
-      <details class="project-category">
-        <summary>
-          <div class="category-left">
-            <span class="category-name">Information Retrieval</span>
-            <span class="category-count">4 projects</span>
-          </div>
-          <span class="category-arrow">&#9654;</span>
-        </summary>
-        <div class="category-projects">
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">BM25 Query Processor with C++20 Coroutine Generators</span>
-              <span class="project-institution">NYU</span>
-            </div>
-            <p class="project-hook">A search engine that sifts through 3.2 million documents — but only reads the ones it absolutely has to. The trick? Making C++ pretend it's Python.</p>
-            <p class="project-summary">C++20 coroutine-based lazy generator for streaming inverted lists; conjunctive merge and MaxScore pruning driven by compiler-managed coroutine state.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Cosine Dissimilarity Web Crawler</span>
-              <span class="project-institution">NYU</span>
-            </div>
-            <p class="project-hook">A web crawler that refuses to read pages saying the same thing — even when the URLs look completely different. It understands meaning, not just addresses.</p>
-            <p class="project-summary">SentenceTransformer embeddings used for near-duplicate filtering before pages enter the crawl frontier — semantically diverse crawl over URL-hash dedup.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Neural Search Pipeline with Embedding-Based Cluster Sharding</span>
-              <span class="project-institution">NYU</span>
-            </div>
-            <p class="project-hook">Why search the whole library when you can route the question to the one shelf that matters? Built the system that decides which shelf.</p>
-            <p class="project-summary">Dense embeddings &rarr; PCA &rarr; UMAP &rarr; 16-cluster sharding; queries routed to a single shard rather than scanning the full corpus.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Inverted Index Builder over MS MARCO (3.2M Docs)</span>
-              <span class="project-institution">NYU</span>
-            </div>
-            <p class="project-hook">Built a searchable index over 3.2 million documents in C++ — without ever loading more than a fraction of them into memory.</p>
-            <p class="project-summary">C++23 threshold-based intermediate dump-and-merge index construction over 3.2M MARCO documents; memory-bounded at any corpus size.</p>
-          </div>
-        </div>
-      </details>
-
-      <!-- Systems & Algorithms -->
-      <details class="project-category">
-        <summary>
-          <div class="category-left">
-            <span class="category-name">Systems &amp; Algorithms</span>
-            <span class="category-count">7 projects</span>
-          </div>
-          <span class="category-arrow">&#9654;</span>
-        </summary>
-        <div class="category-projects">
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Unix Shell Implementation in C++</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">What does a command prompt actually need to work? Built one from scratch — turns out it's mostly about where signals go when you hit Ctrl+C.</p>
-            <p class="project-summary">Full Unix shell with foreground/background process management, signal handling (SIGCHLD, SIGINT, SIGTSTP), and built-in commands.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Multithreaded Web Crawler &amp; Article Classifier</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">Five threads, thirteen article categories. It doesn't stop until every single category has been covered.</p>
-            <p class="project-summary">3 crawler + 1 classifier + 1 strategy manager threads synchronised with pthreads, semaphores, and mutexes.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">CPU Scheduler Simulator — FCFS, Round Robin &amp; Multilevel Feedback</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">CPU-hungry tasks sink to the bottom. Quick ones float to the top. Built three different strategies and watched them compete on the same workload.</p>
-            <p class="project-summary">C++ simulation of three scheduling algorithms with Gantt chart output and comparative performance analysis.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Data Structures Library from Scratch</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">Three different ways to keep a sorted list balanced as it grows — all built from the ground up, no shortcuts, no libraries.</p>
-            <p class="project-summary">Custom Python implementations of k-ary Heap, BST, Red-Black Tree, Splay Tree, and Treap from scratch.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">TCP Client-Server Application</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">Built a messaging protocol from scratch — just two computers talking to each other over a raw connection, one character at a time.</p>
-            <p class="project-summary">Python socket programming: full TCP client with POST/READ/QUIT protocol commands over raw sockets.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">MapReduce Word Count — Hadoop</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">The same program running across a thousand machines at once, counting words in millions of documents — and not a single line of code tells it how to split the work.</p>
-            <p class="project-summary">Canonical MapReduce Word Count in Java on Hadoop demonstrating distributed processing fundamentals.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Poker Hand Evaluator with JUnit Tests</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">A poker hand evaluator that works for any number of cards dealt — with tests covering every hand type and every edge case I could think of.</p>
-            <p class="project-summary">Java poker hand evaluator with JUnit 5 test suite covering all hand types and edge cases.</p>
-          </div>
-        </div>
-      </details>
-
-      <!-- Cloud & DevOps -->
-      <details class="project-category">
-        <summary>
-          <div class="category-left">
-            <span class="category-name">Cloud &amp; DevOps</span>
-            <span class="category-count">4 projects</span>
-          </div>
-          <span class="category-arrow">&#9654;</span>
-        </summary>
-        <div class="category-projects">
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">AWS Dining Concierge Chatbot</span>
-              <span class="project-institution">NYU</span>
-            </div>
-            <p class="project-hook">A restaurant recommendation chatbot — built entirely out of cloud services that only exist for the split second they're answering you.</p>
-            <p class="project-summary">Fully serverless restaurant chatbot: Lex v2 &rarr; 3 Lambdas &rarr; DynamoDB + ElasticSearch, seeded by a custom Yelp scraper.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Flask App on EKS with Prometheus Monitoring</span>
-              <span class="project-institution">NYU</span>
-            </div>
-            <p class="project-hook">Deployed a web app to the cloud — then gave it an alarm system that goes off the second anything misbehaves.</p>
-            <p class="project-summary">Flask + MongoDB on AWS EKS with Prometheus + Alertmanager observability stack and IRSA least-privilege access.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Serverless AI Photo Search (AWS Rekognition + OpenSearch)</span>
-              <span class="project-institution">NYU</span>
-            </div>
-            <p class="project-hook">Upload a photo of your dog. Search for 'dog'. It shows up. You never labelled it — the AI did.</p>
-            <p class="project-summary">S3 upload &rarr; Lambda &rarr; Rekognition auto-labels &rarr; OpenSearch index; fully event-driven keyword photo search.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">Solar Consumer Data Web Scraper</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">Real solar data, not made up — pulled straight from a live consumer portal so the energy simulation wouldn't have to invent numbers.</p>
-            <p class="project-summary">Selenium scraper pulling real PV solar consumer data to feed the P2P energy market simulation.</p>
-          </div>
-        </div>
-      </details>
-
-      <!-- Full Stack & Databases -->
-      <details class="project-category">
-        <summary>
-          <div class="category-left">
-            <span class="category-name">Full Stack &amp; Databases</span>
-            <span class="category-count">4 projects</span>
-          </div>
-          <span class="category-arrow">&#9654;</span>
-        </summary>
-        <div class="category-projects">
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">ArtSync — Full-Stack Social Media App (MERN)</span>
-              <span class="project-institution">NYU</span>
-            </div>
-            <p class="project-hook">A full social media app — posts, follows, real-time chat — built and deployed end-to-end from scratch.</p>
-            <p class="project-summary">MERN social platform with real-time Socket.io chat, JWT auth, Cloudinary media, deployed on AWS Amplify.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">PDS — Full-Stack Food Pantry Platform</span>
-              <span class="project-institution">NYU</span>
-            </div>
-            <p class="project-hook">A food pantry app where the database itself enforces the rules — not the code wrapped around it.</p>
-            <p class="project-summary">Flask + React + PostgreSQL with SQL triggers and stored procedures keeping business logic inside the database layer.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">HotMeals Restaurant Management System</span>
-              <span class="project-institution">CityU</span>
-            </div>
-            <p class="project-hook">A restaurant booking and ordering system built like a real product — two versioned releases, bug reports, and a full test suite.</p>
-            <p class="project-summary">Full Java desktop app for restaurant booking, ordering, and payments — full SDLC with two releases.</p>
-          </div>
-          <div class="project-item">
-            <div class="project-item-header">
-              <span class="project-title">SQL Query Optimisation Study</span>
-              <span class="project-institution">NYU</span>
-            </div>
-            <p class="project-hook">The same query, ten times faster. Here's every optimisation step — and the evidence that each one actually helped.</p>
-            <p class="project-summary">Systematic EXPLAIN ANALYSE profiling with iterative indexing and query restructuring; measured speedup documented at each step.</p>
-          </div>
-        </div>
-      </details>
-
-    </section>
-
-    <!-- Skills -->
-    <section class="skills" aria-labelledby="skills-heading">
-      <h2 id="skills-heading" class="section-label">Skills</h2>
-      <div class="skill-row">
-        <span class="skill-label">Languages</span>
-        <span class="skill-value">Python, C++, Java, TypeScript, JavaScript, SQL</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-label">AI / ML</span>
-        <span class="skill-value">LangGraph, LangChain, MCP, RAG, PyTorch, TensorFlow, HuggingFace, Pinecone</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-label">Cloud &amp; Infra</span>
-        <span class="skill-value">AWS, Docker, Kubernetes, Temporal</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-label">Full Stack</span>
-        <span class="skill-value">FastAPI, Flask, React.js, Node.js, PostgreSQL, MongoDB</span>
+    <!-- ③ Photos — full width, masonry, tranquil sea -->
+    <section id="photos" class="photos layout">
+      <div class="photo-grid">
+        <!-- Drop <img> tags here — they flow into columns at their natural aspect ratios -->
       </div>
     </section>
 
   </main>
 
-  <!-- Contact -->
+  <!-- ④ Contact -->
   <footer id="contact" class="contact">
     <div class="container">
       <a href="mailto:utkarshworkemail@gmail.com">Email</a>
