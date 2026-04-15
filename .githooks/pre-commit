@@ -1,0 +1,15 @@
+#!/bin/sh
+# .githooks/pre-commit
+#
+# Runs build-photos.js before every commit.
+# Converts any HEIC/HEIF files in assets/photos/ to JPEG, then re-stages
+# the affected files so the converted images and updated index.html are
+# included in the same commit automatically.
+
+set -e
+
+echo "→ Running build-photos…"
+node scripts/build-photos.js
+
+# Re-stage anything the script may have changed
+git add assets/photos/ assets/profile-picture/ index.html
