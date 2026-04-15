@@ -200,6 +200,95 @@ body {
   color: var(--text);
 }
 
+/* ── Projects ───────────────────────────────────────── */
+.projects {
+  padding:    3rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.project-category {
+  border-bottom: 1px solid var(--border);
+}
+
+.project-category:last-child {
+  border-bottom: none;
+}
+
+.project-category summary {
+  display:         flex;
+  justify-content: space-between;
+  align-items:     center;
+  padding:         0.85rem 0;
+  cursor:          pointer;
+  list-style:      none;
+  user-select:     none;
+}
+
+.project-category summary::-webkit-details-marker { display: none; }
+
+.category-left {
+  display:    flex;
+  align-items: baseline;
+  gap:         0.6rem;
+}
+
+.category-name {
+  font-size:   0.9375rem;
+  font-weight: 500;
+  color:       var(--text);
+}
+
+.category-count {
+  font-size: 0.75rem;
+  color:     var(--muted);
+}
+
+.category-arrow {
+  font-size:  0.65rem;
+  color:      var(--muted);
+  transition: transform 200ms ease;
+  display:    inline-block;
+}
+
+.project-category[open] .category-arrow {
+  transform: rotate(90deg);
+}
+
+.category-projects {
+  padding-bottom: 1.25rem;
+}
+
+.project-item {
+  padding:    0.75rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.project-item-header {
+  display:         flex;
+  justify-content: space-between;
+  align-items:     baseline;
+  margin-bottom:   0.2rem;
+}
+
+.project-title {
+  font-size:   0.9375rem;
+  font-weight: 500;
+  color:       var(--text);
+}
+
+.project-institution {
+  font-size:   0.75rem;
+  color:       var(--muted);
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.project-summary {
+  font-size:   0.875rem;
+  line-height: 1.6;
+  color:       var(--muted);
+}
+
 /* ── Contact ────────────────────────────────────────── */
 .contact {
   padding:    3rem 0 4rem;
