@@ -29,13 +29,13 @@ new IntersectionObserver(
 ).observe(heroName);
 
 /* ── Mobile: collapsible "About me" and "Work" panels ──────────── */
-if (window.matchMedia('(max-width: 600px)').matches) {
-  document.querySelectorAll('.split-aside, .split-main').forEach(container => {
-    container.querySelector('.column-title').addEventListener('click', () => {
-      container.classList.toggle('collapsed');
-    });
+// No matchMedia guard — CSS handles the visual effect, JS just toggles the class.
+// On desktop the collapse rules don't exist in CSS so toggling is a no-op visually.
+document.querySelectorAll('.split-aside, .split-main').forEach(container => {
+  container.querySelector('.column-title').addEventListener('click', () => {
+    container.classList.toggle('collapsed');
   });
-}
+});
 
 /* ── Active nav link ────────────────────────────────────────────── */
 const navLinks  = document.querySelectorAll('.site-nav a[href^="#"]');
