@@ -41,7 +41,7 @@ body {
   top:         0;
   background:  var(--bg);
   border-bottom: 1px solid var(--border);
-  padding:     0.6rem 2rem;
+  padding:     0 2rem;
   z-index:     10;
   opacity:     0;
   pointer-events: none;
@@ -53,6 +53,15 @@ body {
   pointer-events: auto;
 }
 
+.header-inner {
+  max-width:       var(--max-width);
+  margin:          0 auto;
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  height:          2.75rem;
+}
+
 .site-name {
   font-size:       0.75rem;
   font-weight:     600;
@@ -60,11 +69,33 @@ body {
   text-decoration: none;
   letter-spacing:  -0.01em;
   transition:      color 150ms ease;
+  flex-shrink:     0;
 }
 
 .site-name:hover { color: var(--accent); }
 
 .site-name:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* ── Site nav ───────────────────────────────────────────── */
+.site-nav ul {
+  display:    flex;
+  gap:        1.75rem;
+  list-style: none;
+  margin:     0;
+  padding:    0;
+}
+
+.site-nav a {
+  font-size:       0.75rem;
+  font-weight:     500;
+  color:           var(--muted);
+  text-decoration: none;
+  letter-spacing:  0.01em;
+  transition:      color 150ms ease;
+}
+
+.site-nav a:hover         { color: var(--text); }
+.site-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* ── Container ──────────────────────────────────────── */
 .container {
@@ -355,4 +386,6 @@ body {
   }
 
   .project-institution { margin-left: 0; }
+
+  .site-nav { display: none; }
 }

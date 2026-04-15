@@ -13,7 +13,16 @@
 <body>
 
   <header class="site-header">
-    <a href="/" class="site-name">Utkarsh Jain</a>
+    <div class="header-inner">
+      <a href="/" class="site-name">Utkarsh Jain</a>
+      <nav class="site-nav" aria-label="Page sections">
+        <ul>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main class="container">
@@ -31,7 +40,7 @@
     </section>
 
     <!-- Experience -->
-    <section class="experience" aria-labelledby="experience-heading">
+    <section id="experience" class="experience" aria-labelledby="experience-heading">
       <h2 id="experience-heading" class="section-label">Experience</h2>
 
       <div class="role">
@@ -74,7 +83,7 @@
     </section>
 
     <!-- Projects -->
-    <section class="projects" aria-labelledby="projects-heading">
+    <section id="projects" class="projects" aria-labelledby="projects-heading">
       <h2 id="projects-heading" class="section-label">Projects</h2>
 
       <!-- Machine Learning & AI -->
@@ -453,7 +462,7 @@
   </main>
 
   <!-- Contact -->
-  <footer class="contact">
+  <footer id="contact" class="contact">
     <div class="container">
       <a href="mailto:utkarshworkemail@gmail.com">Email</a>
       <span class="dot">&middot;</span>
