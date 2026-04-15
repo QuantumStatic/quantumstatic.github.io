@@ -11,83 +11,70 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
 const header   = document.querySelector('.site-header');
 const heroName = document.querySelector('.hero h1');
 
-const headerObserver = new IntersectionObserver(
+new IntersectionObserver(
   ([entry]) => header.classList.toggle('visible', !entry.isIntersecting),
   { threshold: 0 }
-);
-
-headerObserver.observe(heroName);
+).observe(heroName);
 
 /* ── Project accordion ──────────────────────────────────────────── */
 document.querySelectorAll('.project-category').forEach(details => {
   const summary = details.querySelector('summary');
   const content = details.querySelector('.category-projects');
 
-  // Sync aria-expanded with the details open state on init
-  summary.setAttribute('aria-expanded', details.open ? 'true' : 'false');
+  summary.setAttribute('aria-expanded', 'false');
 
   summary.addEventListener('click', e => {
     e.preventDefault();
 
     const isOpen = details.open;
-
-    // Update ARIA before the visual change
     summary.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
 
     if (reducedMotion) {
-      // Respect user preference — skip animation entirely
-      details.toggleAttribute('open');
+      details.open = !isOpen;
       return;
     }
 
-    if (isOpen) {
-      collapse(details, content);
-    } else {
-      expand(details, content);
-    }
+    isOpen ? collapse(details, content) : expand(details, content);
   });
 });
 
 /**
  * Animates the content panel open.
- * Sets open immediately so scrollHeight is measurable, then
- * transitions from 0 to the measured height.
  *
- * The double rAF is required: the first frame commits height:'0',
- * the second frame starts the transition to the target height.
- * Without it, the browser batches both writes and skips the transition.
+ * Reading `content.offsetHeight` after setting height:'0' forces the
+ * browser to flush pending style changes before we set the target height.
+ * Without this flush, the browser batches both writes and skips the transition.
  */
 function expand(details, content) {
-  details.setAttribute('open', '');
+  details.open = true;
+
   const targetHeight = content.scrollHeight;
-
   content.style.height = '0';
+  content.offsetHeight; // Force layout flush — do not remove
 
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      content.style.height = targetHeight + 'px';
-    });
-  });
+  content.style.height = targetHeight + 'px';
 
   content.addEventListener('transitionend', () => {
-    content.style.height = ''; // Let CSS take over (auto)
+    content.style.height = ''; // Return to natural height
   }, { once: true });
 }
 
 /**
  * Animates the content panel closed.
- * Fixes the current height explicitly so the transition has a
- * defined start point, then transitions to 0 before removing open.
+ *
+ * Same flush trick: pin the current height explicitly, force a layout,
+ * then transition to 0. Without the flush the two writes are batched
+ * and the transition never starts — so transitionend never fires and
+ * the panel stays open.
  */
 function collapse(details, content) {
   content.style.height = content.scrollHeight + 'px';
+  content.offsetHeight; // Force layout flush — do not remove
 
-  requestAnimationFrame(() => {
-    content.style.height = '0';
-  });
+  content.style.height = '0';
 
   content.addEventListener('transitionend', () => {
-    details.removeAttribute('open');
+    details.open = false;
     content.style.height = ''; // Clean up inline style
   }, { once: true });
 }
