@@ -260,9 +260,6 @@ body {
   transition:     height 280ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.category-projects--animating {
-  overflow: hidden;
-}
 
 .project-item {
   padding:     0.75rem 0 0.75rem 1rem;
@@ -342,4 +339,11 @@ body {
   }
 
   .skill-label { width: auto; }
+
+  .project-item-header {
+    flex-direction: column;
+    gap:            0.15rem;
+  }
+
+  .project-institution { margin-left: 0; }
 }

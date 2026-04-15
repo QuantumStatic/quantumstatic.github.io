@@ -13,7 +13,7 @@
 <body>
 
   <header class="site-header">
-    <a href="#" class="site-name">Utkarsh Jain</a>
+    <a href="/" class="site-name">Utkarsh Jain</a>
   </header>
 
   <main class="container">
@@ -429,50 +429,6 @@
     </div>
   </footer>
 
-  <script>
-    // Sticky header
-    const header = document.querySelector('.site-header');
-    const heroName = document.querySelector('.hero h1');
-    const observer = new IntersectionObserver(
-      ([entry]) => header.classList.toggle('visible', !entry.isIntersecting),
-      { threshold: 0 }
-    );
-    observer.observe(heroName);
-
-    // Animated project category expand/collapse
-    document.querySelectorAll('.project-category').forEach(details => {
-      const summary = details.querySelector('summary');
-      const content = details.querySelector('.category-projects');
-
-      summary.addEventListener('click', e => {
-        e.preventDefault();
-
-        if (details.open) {
-          // Collapse
-          content.style.height = content.scrollHeight + 'px';
-          requestAnimationFrame(() => {
-            content.style.height = '0';
-          });
-          content.addEventListener('transitionend', () => {
-            details.removeAttribute('open');
-            content.style.height = '';
-          }, { once: true });
-        } else {
-          // Expand
-          details.setAttribute('open', '');
-          const h = content.scrollHeight;
-          content.style.height = '0';
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              content.style.height = h + 'px';
-            });
-          });
-          content.addEventListener('transitionend', () => {
-            content.style.height = '';
-          }, { once: true });
-        }
-      });
-    });
-  </script>
+  <script src="main.js" defer></script>
 </body>
 </html>
