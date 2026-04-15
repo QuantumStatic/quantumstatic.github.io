@@ -99,6 +99,7 @@ body {
 
 .site-nav a:hover         { color: var(--text); }
 .site-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.site-nav a.active        { color: var(--text); font-weight: 600; }
 
 /* ── Layout wrapper (wide) ──────────────────────────── */
 .layout {
@@ -133,11 +134,36 @@ body {
   max-width: var(--max-width); /* keep line length readable */
 }
 
+/* Hero load animation */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1,
+.hero .title,
+.hero .tagline {
+  opacity:          0;
+  animation:        fade-up 500ms ease forwards;
+}
+
+.hero h1     { animation-delay: 0ms;   }
+.hero .title { animation-delay: 80ms;  }
+.hero .tagline { animation-delay: 160ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero h1, .hero .title, .hero .tagline {
+    opacity: 1;
+    animation: none;
+  }
+}
+
 .hero h1 {
-  font-size:      2.75rem;
-  font-weight:    700;
-  letter-spacing: -0.03em;
-  line-height:    1.1;
+  font-family:    'DM Serif Display', Georgia, serif;
+  font-size:      3rem;
+  font-weight:    400;  /* DM Serif Display is already bold at 400 */
+  letter-spacing: -0.01em;
+  line-height:    1.05;
   margin-bottom:  0.5rem;
 }
 
@@ -174,7 +200,7 @@ body {
   position:    sticky;
   top:         var(--header-h); /* clears the sticky nav bar */
   align-self:  flex-start;     /* critical — height = content, not parent */
-  padding:     3rem 0 3rem 2.5rem;
+  padding:     0 0 3rem 2.5rem;
   border-left: 1px solid var(--border);
 }
 
@@ -207,7 +233,7 @@ body {
   font-weight:    700;
   letter-spacing: -0.02em;
   color:          var(--text);
-  padding:        3rem 0 2rem;
+  padding:        3rem 0 1rem; /* bottom reduced — section padding adds the rest */
 }
 
 /* ── Experience ─────────────────────────────────────── */
@@ -218,6 +244,11 @@ body {
 
 .role { margin-bottom: 2.5rem; }
 .role:last-child { margin-bottom: 0; }
+
+/* Accent the current / most-recent role */
+.role:first-child .role-company {
+  color: var(--accent);
+}
 
 .role-header {
   display:         flex;
@@ -324,10 +355,15 @@ body {
 }
 
 .project-item {
-  padding:     0.75rem 0 0.75rem 1rem;
-  border-top:  1px solid var(--border);
-  border-left: 2px solid var(--border);
-  margin-left: 0.25rem;
+  padding:          0.75rem 0 0.75rem 1rem;
+  border-top:       1px solid var(--border);
+  border-left:      2px solid var(--border);
+  margin-left:      0.25rem;
+  transition:       border-left-color 150ms ease;
+}
+
+.project-item:hover {
+  border-left-color: var(--accent);
 }
 
 .project-item-header {
@@ -354,7 +390,7 @@ body {
   font-size:   0.8125rem;
   line-height: 1.55;
   color:       var(--text);
-  opacity:     0.55;
+  opacity:     0.72;
   margin-top:  0.2rem;
 }
 
@@ -449,15 +485,16 @@ body {
 
 /* ── Contact ────────────────────────────────────────── */
 .contact {
-  padding:    3rem 0 4rem;
+  padding:    2rem 0;
   border-top: 1px solid var(--border);
 }
 
 .contact .container {
-  display:     flex;
-  align-items: center;
-  gap:         0.75rem;
-  flex-wrap:   wrap;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             0.75rem;
+  flex-wrap:       wrap;
 }
 
 .contact a {
@@ -482,7 +519,7 @@ body {
   .container { padding: 0 1.25rem; }
 
   .hero      { padding: 3rem 0 2rem; }
-  .hero h1   { font-size: 2rem; }
+  .hero h1   { font-size: 2.25rem; }
 
   /* Collapse two-column to single column */
   .split-layout {

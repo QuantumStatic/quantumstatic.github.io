@@ -16,6 +16,26 @@ new IntersectionObserver(
   { threshold: 0 }
 ).observe(heroName);
 
+/* ── Active nav link ────────────────────────────────────────────── */
+const navLinks  = document.querySelectorAll('.site-nav a[href^="#"]');
+const sections  = [...navLinks]
+  .map(a => document.querySelector(a.getAttribute('href')))
+  .filter(Boolean);
+
+const sectionObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = '#' + entry.target.id;
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+      }
+    });
+  },
+  { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+);
+
+sections.forEach(s => sectionObserver.observe(s));
+
 /* ── Project accordion ──────────────────────────────────────────── */
 document.querySelectorAll('.project-category').forEach(details => {
   const summary = details.querySelector('summary');
