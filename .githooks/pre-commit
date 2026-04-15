@@ -8,8 +8,11 @@
 
 set -e
 
+echo "→ Running build-bio…"
+node scripts/build-bio.js
+
 echo "→ Running build-photos…"
 node scripts/build-photos.js
 
-# Re-stage anything the script may have changed (photos, videos, metadata, HTML)
-git add assets/photos/ assets/profile-picture/ index.html
+# Re-stage anything the scripts may have changed
+git add assets/photos/ assets/profile-picture/ assets/write-up/ index.html
