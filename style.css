@@ -206,8 +206,8 @@ body {
 
 /* ── Identity panel ─────────────────────────────────── */
 .identity-photo {
-  width:         120px;
-  height:        120px;
+  width:         144px;
+  height:        144px;
   border-radius: 50%;
   overflow:      hidden;
   margin:        0 auto 1.25rem;
@@ -233,12 +233,12 @@ body {
   font-weight:    700;
   letter-spacing: -0.02em;
   color:          var(--text);
-  padding:        3rem 0 1rem; /* bottom reduced — section padding adds the rest */
+  padding:        1.5rem 0 0.75rem;
 }
 
 /* ── Experience ─────────────────────────────────────── */
 .experience {
-  padding: 3rem 0;
+  padding: 0.75rem 0 3rem;
   /* no border-top — split-layout border-top acts as the separator */
 }
 
@@ -543,8 +543,8 @@ body {
   }
 
   .identity-photo {
-    width:  90px;
-    height: 90px;
+    width:  108px;
+    height: 108px;
   }
 
   .role-header {
