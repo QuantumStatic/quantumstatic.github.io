@@ -105,14 +105,14 @@ body {
 .layout {
   max-width: var(--max-width-wide);
   margin:    0 auto;
-  padding:   0 2rem;
+  padding:   0 1.6rem;
 }
 
 /* ── Container (narrow, 680px — footer) ─────────────── */
 .container {
   max-width: var(--max-width);
   margin:    0 auto;
-  padding:   0 2rem;
+  padding:   0 1.6rem;
 }
 
 /* ── Section label ──────────────────────────────────── */
@@ -191,7 +191,7 @@ body {
 .split-main {
   flex:          0 0 var(--main-width);
   min-width:     0; /* prevents flex blowout on long content */
-  padding-right: 3rem;
+  padding-right: 2.4rem;
 }
 
 /* Right column: identity panel, stays pinned */
@@ -200,7 +200,7 @@ body {
   position:    sticky;
   top:         var(--header-h); /* clears the sticky nav bar */
   align-self:  flex-start;     /* critical — height = content, not parent */
-  padding:     0 0 3rem 2.5rem;
+  padding:     0 0 3rem 2rem;
   border-left: 1px solid var(--border);
 }
 
@@ -225,6 +225,10 @@ body {
   font-size:   0.9rem;
   line-height: 1.75;
   color:       var(--muted);
+}
+
+.identity-bio + .identity-bio {
+  margin-top: 0.6em;
 }
 
 /* ── Column titles ──────────────────────────────────── */

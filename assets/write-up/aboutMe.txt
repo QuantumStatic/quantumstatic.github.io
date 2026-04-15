@@ -1,5 +1,3 @@
-I'm an MLE based in Brooklyn, NY, focused on LLMs, agentic systems, and RAG pipelines. I've shipped enterprise-grade AI in production — multimodal agents, document intelligence, and self-healing code systems — at startups moving fast. Outside of work, you'll find me on a badminton court, boxing, or on a bike.
-
 My journey began in New Delhi. I wanted to be an athlete for the longest time, until a robotics class in seventh grade changed everything. My teacher's passion for the subject pulled me in, and robotics eventually gave way to computer science.
 
 I studied at City University of Hong Kong on a full tuition scholarship — globally ranked #50 by QS at the time. Hong Kong was formative in more ways than one. I lived through the 2019 protests; one night, we filed out through a gap in the dorm wall hidden behind a cabinet, made our way past toppled buses, and reached a coach evacuating international students from the city. I saw smoke grenades, Molotov cocktails, tear gas, and broken infrastructure. A once-in-a-lifetime experience.
