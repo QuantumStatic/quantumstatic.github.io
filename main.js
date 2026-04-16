@@ -18,13 +18,14 @@ if (themeToggle) {
     const current = html.getAttribute('data-theme');
     const next    = current === 'dark' ? 'light' : 'dark';
 
-    // Add transition class, swap theme, then remove class after transition ends
+    // Add transition class first, then change theme one frame later so the
+    // browser sees a distinct before/after state and actually animates it
     html.classList.add('theme-transitioning');
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-
-    // Remove after 500ms so normal transitions (hover etc.) are unaffected
-    setTimeout(() => html.classList.remove('theme-transitioning'), 200);
+    requestAnimationFrame(() => {
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      setTimeout(() => html.classList.remove('theme-transitioning'), 200);
+    });
   });
 }
 
