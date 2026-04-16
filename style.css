@@ -5,6 +5,20 @@
   padding: 0;
 }
 
+/* ── Theme transition ───────────────────────────────── */
+/* Applied when JS toggles theme — smooth 500ms colour sweep */
+html.theme-transitioning,
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition:
+    background-color 500ms ease,
+    color            500ms ease,
+    border-color     500ms ease,
+    fill             500ms ease,
+    stroke           500ms ease !important;
+}
+
 /* ── Tokens ─────────────────────────────────────────── */
 :root {
   --bg:             #FAFAFA;
@@ -130,12 +144,15 @@ body {
 .site-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .site-nav a.active        { color: var(--text); font-weight: 600; }
 
-/* ── Theme toggle button ─────────────────────────────── */
+/* ── Theme toggle button (fixed, always visible) ─────── */
 .theme-toggle {
+  position:         fixed;
+  top:              0.7rem;
+  right:            1.6rem;
+  z-index:          100;
   display:          flex;
   align-items:      center;
   justify-content:  center;
-  margin-left:      1.25rem;
   padding:          0;
   width:            1.75rem;
   height:           1.75rem;
@@ -145,7 +162,6 @@ body {
   color:            var(--muted);
   cursor:           pointer;
   transition:       color 150ms ease, background 150ms ease;
-  flex-shrink:      0;
 }
 
 .theme-toggle:hover {
@@ -165,7 +181,7 @@ body {
 }
 
 /* Show the right icon based on current theme */
-.icon-moon { display: block; }  /* default: light mode shows moon */
+.icon-moon { display: block; }  /* light mode: moon shown, click → go dark */
 .icon-sun  { display: none;  }
 
 html[data-theme="dark"] .icon-moon  { display: none;  }

@@ -14,10 +14,17 @@ const isMobile      = window.matchMedia('(max-width: 600px)').matches;
 const themeToggle = document.getElementById('theme-toggle');
 if (themeToggle) {
   themeToggle.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme');
+    const html    = document.documentElement;
+    const current = html.getAttribute('data-theme');
     const next    = current === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
+
+    // Add transition class, swap theme, then remove class after transition ends
+    html.classList.add('theme-transitioning');
+    html.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
+
+    // Remove after 500ms so normal transitions (hover etc.) are unaffected
+    setTimeout(() => html.classList.remove('theme-transitioning'), 500);
   });
 }
 
