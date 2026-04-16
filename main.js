@@ -14,13 +14,21 @@ const isMobile      = window.matchMedia('(max-width: 600px)').matches;
 const themeToggle = document.getElementById('theme-toggle');
 if (themeToggle) {
   themeToggle.addEventListener('click', () => {
-    const html    = document.documentElement;
-    const current = html.getAttribute('data-theme');
-    const next    = current === 'dark' ? 'light' : 'dark';
+    const html         = document.documentElement;
+    const current      = html.getAttribute('data-theme');
+    const systemDark   = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const currentIsDark = current === 'dark' || (!current && systemDark);
+    const next         = currentIsDark ? 'light' : 'dark';
+    const systemNext   = systemDark ? 'dark' : 'light';
 
-    // @property on :root handles the transition — just swap the attribute
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
+    if (next === systemNext) {
+      // Toggling back to match system — clear the override, let CSS take over
+      html.removeAttribute('data-theme');
+      localStorage.removeItem('theme');
+    } else {
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    }
   });
 }
 

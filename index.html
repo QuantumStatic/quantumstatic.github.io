@@ -11,12 +11,11 @@
   <link rel="stylesheet" href="style.css" />
   <script data-goatcounter="https://quantumstatic.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
-  <!-- Prevent flash of wrong theme: apply saved preference before first paint -->
+  <!-- Apply manual override before first paint (only if user has toggled) -->
   <script>
     (function () {
       var saved = localStorage.getItem('theme');
-      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
     })();
   </script>
 </head>
