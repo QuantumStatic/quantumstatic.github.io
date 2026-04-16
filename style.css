@@ -5,19 +5,15 @@
   padding: 0;
 }
 
-/* ── Theme transition ───────────────────────────────── */
-/* Applied when JS toggles theme — smooth 500ms colour sweep */
-html.theme-transitioning,
-html.theme-transitioning *,
-html.theme-transitioning *::before,
-html.theme-transitioning *::after {
-  transition:
-    background-color 200ms ease,
-    color            200ms ease,
-    border-color     200ms ease,
-    fill             200ms ease,
-    stroke           200ms ease !important;
-}
+/* ── Typed custom properties — enables CSS to interpolate them ── */
+/* @property tells the browser each token is a <color>, so        */
+/* transitions on :root actually animate the variable itself,     */
+/* and every element using var(--x) updates smoothly for free.    */
+@property --bg     { syntax: '<color>'; inherits: true; initial-value: #FAFAFA; }
+@property --text   { syntax: '<color>'; inherits: true; initial-value: #1A1A1A; }
+@property --muted  { syntax: '<color>'; inherits: true; initial-value: #5D6572; }
+@property --accent { syntax: '<color>'; inherits: true; initial-value: #2563EB; }
+@property --border { syntax: '<color>'; inherits: true; initial-value: #E5E7EB; }
 
 /* ── Tokens ─────────────────────────────────────────── */
 :root {
@@ -26,6 +22,10 @@ html.theme-transitioning *::after {
   --muted:          #5D6572;
   --accent:         #2563EB;
   --border:         #E5E7EB;
+
+  /* Transition the variables themselves — all consumers update automatically */
+  transition: --bg 200ms ease, --text 200ms ease, --muted 200ms ease,
+              --accent 200ms ease, --border 200ms ease;
   --max-width:      680px;
   --max-width-wide: 1320px;
   --aside-width:    35%;

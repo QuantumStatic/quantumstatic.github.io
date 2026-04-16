@@ -18,14 +18,9 @@ if (themeToggle) {
     const current = html.getAttribute('data-theme');
     const next    = current === 'dark' ? 'light' : 'dark';
 
-    // Add transition class first, then change theme one frame later so the
-    // browser sees a distinct before/after state and actually animates it
-    html.classList.add('theme-transitioning');
-    requestAnimationFrame(() => {
-      html.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      setTimeout(() => html.classList.remove('theme-transitioning'), 200);
-    });
+    // @property on :root handles the transition — just swap the attribute
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
   });
 }
 
