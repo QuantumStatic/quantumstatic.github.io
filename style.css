@@ -291,9 +291,6 @@ html[data-theme="dark"] .icon-sun   { display: block; }
 /* Right column: identity panel, stays pinned */
 .split-aside {
   flex:        0 0 var(--aside-width);
-  position:    sticky;
-  top:         var(--header-h); /* clears the sticky nav bar */
-  align-self:  flex-start;     /* critical — height = content, not parent */
   padding:     0 0 3rem 2rem;
   border-left: 1px solid var(--border);
 }
