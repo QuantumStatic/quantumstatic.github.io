@@ -20,6 +20,17 @@
   --font:           'Inter', system-ui, sans-serif;
 }
 
+/* ── Dark mode ──────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:     #111111;
+    --text:   #EDEDED;
+    --muted:  #8B95A3;
+    --accent: #60A5FA;
+    --border: #2A2A2A;
+  }
+}
+
 /* ── Base ───────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
