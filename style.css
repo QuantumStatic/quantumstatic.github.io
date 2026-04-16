@@ -145,9 +145,11 @@ body {
 .site-nav a.active        { color: var(--text); font-weight: 600; }
 
 /* ── Theme toggle button (fixed, always visible) ─────── */
+/* Vertically centred within header height so when the sticky
+   header fades in it appears to smoothly absorb the button */
 .theme-toggle {
   position:         fixed;
-  top:              0.7rem;
+  top:              calc((var(--header-h) - 1.75rem) / 2);
   right:            1.6rem;
   z-index:          100;
   display:          flex;
