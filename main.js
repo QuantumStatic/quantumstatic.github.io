@@ -24,7 +24,7 @@ if (themeToggle) {
     localStorage.setItem('theme', next);
 
     // Remove after 500ms so normal transitions (hover etc.) are unaffected
-    setTimeout(() => html.classList.remove('theme-transitioning'), 500);
+    setTimeout(() => html.classList.remove('theme-transitioning'), 200);
   });
 }
 
