@@ -297,8 +297,8 @@ html[data-theme="dark"] .icon-sun   { display: block; }
 
 /* ── Identity panel ─────────────────────────────────── */
 .identity-photo {
-  width:         144px;
-  height:        144px;
+  width:         158px;
+  height:        158px;
   border-radius: 50%;
   overflow:      hidden;
   margin:        0 auto 1.25rem;
