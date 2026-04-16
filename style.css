@@ -21,14 +21,32 @@
 }
 
 /* ── Dark mode ──────────────────────────────────────── */
+/* System preference — only when no manual override is set */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg:     #111111;
     --text:   #EDEDED;
     --muted:  #8B95A3;
     --accent: #60A5FA;
     --border: #2A2A2A;
   }
+}
+
+/* Manual override — set via JS toggle, stored in localStorage */
+html[data-theme="dark"] {
+  --bg:     #111111;
+  --text:   #EDEDED;
+  --muted:  #8B95A3;
+  --accent: #60A5FA;
+  --border: #2A2A2A;
+}
+
+html[data-theme="light"] {
+  --bg:     #FAFAFA;
+  --text:   #1A1A1A;
+  --muted:  #5D6572;
+  --accent: #2563EB;
+  --border: #E5E7EB;
 }
 
 /* ── Base ───────────────────────────────────────────── */
@@ -111,6 +129,53 @@ body {
 .site-nav a:hover         { color: var(--text); }
 .site-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .site-nav a.active        { color: var(--text); font-weight: 600; }
+
+/* ── Theme toggle button ─────────────────────────────── */
+.theme-toggle {
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+  margin-left:      1.25rem;
+  padding:          0;
+  width:            1.75rem;
+  height:           1.75rem;
+  background:       none;
+  border:           none;
+  border-radius:    50%;
+  color:            var(--muted);
+  cursor:           pointer;
+  transition:       color 150ms ease, background 150ms ease;
+  flex-shrink:      0;
+}
+
+.theme-toggle:hover {
+  color:      var(--text);
+  background: var(--border);
+}
+
+.theme-toggle:focus-visible {
+  outline:        2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.theme-toggle svg {
+  width:  1rem;
+  height: 1rem;
+  stroke: currentColor;
+}
+
+/* Show the right icon based on current theme */
+.icon-moon { display: block; }  /* default: light mode shows moon */
+.icon-sun  { display: none;  }
+
+html[data-theme="dark"] .icon-moon  { display: none;  }
+html[data-theme="dark"] .icon-sun   { display: block; }
+
+/* system dark, no manual override */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .icon-moon { display: none;  }
+  html:not([data-theme="light"]) .icon-sun  { display: block; }
+}
 
 /* ── Layout wrapper (wide) ──────────────────────────── */
 .layout {

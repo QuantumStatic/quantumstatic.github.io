@@ -10,6 +10,17 @@
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isMobile      = window.matchMedia('(max-width: 600px)').matches;
 
+/* ── Theme toggle ───────────────────────────────────────────────── */
+const themeToggle = document.getElementById('theme-toggle');
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next    = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+}
+
 /* ── Photo grid: shuffle + cap at 50 ───────────────────────────── */
 const photoGrid = document.querySelector('.photo-grid');
 if (photoGrid) {
