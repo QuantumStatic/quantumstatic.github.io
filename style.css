@@ -498,6 +498,18 @@ html[data-theme="dark"] .icon-sun   { display: block; }
   margin-top:  0.2rem;
 }
 
+.project-link {
+  display:         inline-block;
+  margin-top:      0.4rem;
+  font-size:       0.75rem;
+  font-weight:     500;
+  color:           var(--accent);
+  text-decoration: none;
+  transition:      opacity 150ms ease;
+}
+
+.project-link:hover { opacity: 0.75; }
+
 /* ── Skills ─────────────────────────────────────────── */
 .skills {
   padding:    3rem 0;
