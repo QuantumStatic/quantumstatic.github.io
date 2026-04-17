@@ -64,6 +64,10 @@ new IntersectionObserver(
 /* ── Mobile: collapsible "About me" and "Work" panels ──────────── */
 // CSS media query is the visual guard — JS just toggles the class.
 // On desktop the collapse rules don't exist so this is a visual no-op.
+if (isMobile) {
+  document.querySelector('.split-aside').classList.add('collapsed');
+}
+
 document.querySelectorAll('.split-aside, .split-main').forEach(container => {
   container.querySelector('.column-title').addEventListener('click', () => {
     container.classList.toggle('collapsed');
