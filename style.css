@@ -391,6 +391,33 @@ html[data-theme="dark"] .icon-sun   { display: block; }
   font-size: 0.8rem;
 }
 
+/* ── Grouped roles (same employer, multiple titles) ─── */
+.role-entries {
+  margin-top:   0.6rem;
+  border-left:  2px solid var(--border);
+  padding-left: 1rem;
+}
+
+.role-entry {
+  padding-top:   0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.role-entry:last-child { margin-bottom: 0; }
+
+.role-entry + .role-entry {
+  border-top: 1px solid var(--border);
+}
+
+.role-entry-header {
+  display:         flex;
+  justify-content: space-between;
+  align-items:     baseline;
+  margin-bottom:   0.75rem;
+}
+
+.role-entry .role-title { margin-bottom: 0; }
+
 /* ── Projects ───────────────────────────────────────── */
 .projects {
   padding:    3rem 0;
@@ -815,7 +842,8 @@ html[data-theme="dark"] .icon-sun   { display: block; }
     height: 108px;
   }
 
-  .role-header {
+  .role-header,
+  .role-entry-header {
     flex-direction: column;
     gap:            0.1rem;
   }
