@@ -500,9 +500,25 @@ html[data-theme="dark"] .icon-sun   { display: block; }
 }
 
 .category-projects-inner {
-  overflow:       hidden;
+  overflow:    hidden;
   padding-bottom: 1.25rem;
-  min-height:     0;
+  min-height:  0;
+  /* GPU-composited visual animation layered on top of grid space animation */
+  opacity:     0;
+  transform:   translateY(-6px);
+  transition:  opacity 240ms ease, transform 240ms ease;
+  will-change: opacity, transform;
+}
+
+.project-category[open] .category-projects-inner {
+  opacity:   1;
+  transform: translateY(0);
+}
+
+/* Animate inner out during collapse */
+.project-category.is-collapsing .category-projects-inner {
+  opacity:   0;
+  transform: translateY(-6px);
 }
 
 .project-item {
