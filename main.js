@@ -170,44 +170,17 @@ if (!isMobile) {
 }
 
 /* ── Project accordion ──────────────────────────────────────────── */
+// CSS grid-template-rows handles the animation (GPU-friendly).
+// JS only manages the [open] attribute and aria state.
 document.querySelectorAll('.project-category').forEach(details => {
   const summary = details.querySelector('summary');
-  const content = details.querySelector('.category-projects');
 
   summary.setAttribute('aria-expanded', 'false');
 
   summary.addEventListener('click', e => {
     e.preventDefault();
-
     const isOpen = details.open;
+    details.open = !isOpen;
     summary.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-
-    if (reducedMotion) {
-      details.open = !isOpen;
-      return;
-    }
-
-    isOpen ? collapsePanel(details, content) : expandPanel(details, content);
   });
 });
-
-function expandPanel(details, content) {
-  details.open = true;
-  const targetHeight = content.scrollHeight;
-  content.style.height = '0';
-  content.offsetHeight; // Force layout flush — do not remove
-  content.style.height = targetHeight + 'px';
-  content.addEventListener('transitionend', () => {
-    content.style.height = '';
-  }, { once: true });
-}
-
-function collapsePanel(details, content) {
-  content.style.height = content.scrollHeight + 'px';
-  content.offsetHeight; // Force layout flush — do not remove
-  content.style.height = '0';
-  content.addEventListener('transitionend', () => {
-    details.open = false;
-    content.style.height = '';
-  }, { once: true });
-}

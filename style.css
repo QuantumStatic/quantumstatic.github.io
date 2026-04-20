@@ -238,6 +238,7 @@ html[data-theme="dark"] .icon-sun   { display: block; }
 .hero .title,
 .hero .tagline {
   opacity:          0;
+  will-change:      opacity, transform;
   animation:        fade-up 500ms ease forwards;
 }
 
@@ -471,10 +472,11 @@ html[data-theme="dark"] .icon-sun   { display: block; }
 }
 
 .category-arrow {
-  font-size:  0.65rem;
-  color:      var(--muted);
-  transition: transform 200ms ease;
-  display:    inline-block;
+  font-size:   0.65rem;
+  color:       var(--muted);
+  transition:  transform 200ms ease;
+  will-change: transform;
+  display:     inline-block;
 }
 
 .project-category[open] .category-arrow {
@@ -482,9 +484,19 @@ html[data-theme="dark"] .icon-sun   { display: block; }
 }
 
 .category-projects {
-  padding-bottom: 1.25rem;
+  display:              grid;
+  grid-template-rows:   0fr;
+  transition:           grid-template-rows 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-category[open] .category-projects {
+  grid-template-rows: 1fr;
+}
+
+.category-projects-inner {
   overflow:       hidden;
-  transition:     height 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding-bottom: 1.25rem;
+  min-height:     0;
 }
 
 .project-item {
