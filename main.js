@@ -62,15 +62,26 @@ new IntersectionObserver(
 ).observe(heroName);
 
 /* ── Mobile: collapsible "About me" and "Work" panels ──────────── */
-// CSS media query is the visual guard — JS just toggles the class.
-// On desktop the collapse rules don't exist so this is a visual no-op.
 if (isMobile) {
   document.querySelector('.split-aside').classList.add('collapsed');
 }
 
 document.querySelectorAll('.split-aside, .split-main').forEach(container => {
   container.querySelector('.column-title').addEventListener('click', () => {
-    container.classList.toggle('collapsed');
+    const isCollapsed = container.classList.contains('collapsed');
+
+    if (isCollapsed) {
+      // Expand: remove collapsed, CSS mobile-reveal animation fires
+      container.classList.remove('collapsed');
+    } else {
+      // Collapse: animate out first, then hide
+      const body = container.querySelector('.aside-body, .main-body');
+      container.classList.add('is-collapsing');
+      body.addEventListener('animationend', () => {
+        container.classList.add('collapsed');
+        container.classList.remove('is-collapsing');
+      }, { once: true });
+    }
   });
 });
 
@@ -171,16 +182,32 @@ if (!isMobile) {
 
 /* ── Project accordion ──────────────────────────────────────────── */
 // CSS grid-template-rows handles the animation (GPU-friendly).
-// JS only manages the [open] attribute and aria state.
+// is-expanding / is-collapsing classes hold the grid at 0fr during
+// setup so the transition always plays in both directions.
 document.querySelectorAll('.project-category').forEach(details => {
-  const summary = details.querySelector('summary');
+  const summary  = details.querySelector('summary');
+  const content  = details.querySelector('.category-projects');
 
   summary.setAttribute('aria-expanded', 'false');
 
   summary.addEventListener('click', e => {
     e.preventDefault();
     const isOpen = details.open;
-    details.open = !isOpen;
     summary.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+
+    if (isOpen) {
+      // Collapse: add class (overrides to 0fr), wait for transition, then close
+      details.classList.add('is-collapsing');
+      content.addEventListener('transitionend', () => {
+        details.open = false;
+        details.classList.remove('is-collapsing');
+      }, { once: true });
+    } else {
+      // Expand: force 0fr before open so the transition starts from collapsed
+      details.classList.add('is-expanding');
+      details.open = true;
+      details.offsetHeight; // force reflow
+      details.classList.remove('is-expanding');
+    }
   });
 });

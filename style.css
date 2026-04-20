@@ -493,6 +493,12 @@ html[data-theme="dark"] .icon-sun   { display: block; }
   grid-template-rows: 1fr;
 }
 
+/* Hold at 0fr during collapse animation (JS adds/removes this class) */
+.project-category.is-collapsing .category-projects,
+.project-category.is-expanding  .category-projects {
+  grid-template-rows: 0fr;
+}
+
 .category-projects-inner {
   overflow:       hidden;
   padding-bottom: 1.25rem;
@@ -809,26 +815,38 @@ html[data-theme="dark"] .icon-sun   { display: block; }
     transform: rotate(0deg); /* ► collapsed */
   }
 
-  /* Collapse: display:none is instant and bulletproof — no height limits */
+  /* Collapsed: hidden */
   .split-aside.collapsed .aside-body,
   .split-main.collapsed  .main-body {
     display: none;
   }
 
-  /* Expand: fade in when the section becomes visible */
+  /* Expand: fade in */
   .aside-body,
   .main-body {
     animation: none;
   }
 
-  .split-aside:not(.collapsed) .aside-body,
-  .split-main:not(.collapsed)  .main-body {
+  .split-aside:not(.collapsed):not(.is-collapsing) .aside-body,
+  .split-main:not(.collapsed):not(.is-collapsing)  .main-body {
     animation: mobile-reveal 250ms ease;
   }
 
   @keyframes mobile-reveal {
     from { opacity: 0; transform: translateY(-6px); }
     to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Collapse: fade out before display:none (JS listens for animationend) */
+  .split-aside.is-collapsing .aside-body,
+  .split-main.is-collapsing  .main-body {
+    animation: mobile-hide 200ms ease forwards;
+    display:   block; /* keep visible during animation */
+  }
+
+  @keyframes mobile-hide {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(-6px); }
   }
 
   /* Collapse two-column to single column */
