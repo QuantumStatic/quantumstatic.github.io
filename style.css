@@ -393,27 +393,36 @@ html[data-theme="dark"] .icon-sun   { display: block; }
 
 /* ── Grouped roles (same employer, multiple titles) ─── */
 .role-entries {
-  margin-top:   0.6rem;
+  margin-top:   0.9rem;
   border-left:  2px solid var(--border);
-  padding-left: 1rem;
+  padding-left: 1.25rem;
+  margin-left:  0.15rem;
 }
 
 .role-entry {
-  padding-top:   0.6rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 2rem;
+  position:      relative;
 }
 
 .role-entry:last-child { margin-bottom: 0; }
 
-.role-entry + .role-entry {
-  border-top: 1px solid var(--border);
-}
-
+/* horizontal tick connecting the vertical line to each role title */
 .role-entry-header {
   display:         flex;
   justify-content: space-between;
   align-items:     baseline;
   margin-bottom:   0.75rem;
+  position:        relative;
+}
+
+.role-entry-header::before {
+  content:    '';
+  position:   absolute;
+  left:       -1.25rem;
+  top:        0.6em;
+  width:      0.6rem;
+  height:     2px;
+  background: var(--border);
 }
 
 .role-entry .role-title { margin-bottom: 0; }
