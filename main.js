@@ -44,9 +44,9 @@ if (photoGrid) {
     [figures[i], figures[j]] = [figures[j], figures[i]];
   }
 
-  // Hide everything beyond 50 — fresh random batch on every page load
-  if (figures.length > 50) {
-    [...photoGrid.querySelectorAll('.photo-item')].slice(50).forEach(f => {
+  // Hide everything beyond 20 — fresh random batch on every page load
+  if (figures.length > 20) {
+    [...photoGrid.querySelectorAll('.photo-item')].slice(20).forEach(f => {
       f.style.display = 'none';
     });
   }
