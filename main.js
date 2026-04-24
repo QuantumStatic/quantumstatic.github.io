@@ -3,8 +3,9 @@
  *
  * 1. Sticky header: fades in once the hero h1 scrolls out of view
  * 2. Project accordion: animated expand/collapse for <details> categories
- * 3. Photo grid: shuffle on each load, cap at 50 items
+ * 3. Photo grid: shuffle on each load, cap at 20 items
  * 4. Lightbox: click to enlarge on desktop, Escape / backdrop / × to close
+ * 5. Accessibility: skip link, aria-expanded on column toggles, focus trap in lightbox
  */
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -32,7 +33,7 @@ if (themeToggle) {
   });
 }
 
-/* ── Photo grid: shuffle + cap at 50 ───────────────────────────── */
+/* ── Photo grid: shuffle + cap at 20 ───────────────────────────── */
 const photoGrid = document.querySelector('.photo-grid');
 if (photoGrid) {
   const figures = [...photoGrid.querySelectorAll('.photo-item')];
@@ -52,6 +53,14 @@ if (photoGrid) {
   }
 }
 
+/* ── Pause autoplay videos for users who prefer reduced motion ──── */
+if (reducedMotion) {
+  document.querySelectorAll('.photo-item video').forEach(v => {
+    v.pause();
+    v.removeAttribute('autoplay');
+  });
+}
+
 /* ── Sticky header ──────────────────────────────────────────────── */
 const header   = document.querySelector('.site-header');
 const heroName = document.querySelector('.hero h1');
@@ -63,20 +72,26 @@ new IntersectionObserver(
 
 /* ── Mobile: collapsible "About me" and "Work" panels ──────────── */
 if (isMobile) {
-  document.querySelector('.split-aside').classList.add('collapsed');
+  const aside = document.querySelector('.split-aside');
+  aside.classList.add('collapsed');
+  // aside button starts collapsed — aria-expanded already set to false in HTML
 }
 
 document.querySelectorAll('.split-aside, .split-main').forEach(container => {
-  container.querySelector('.column-title').addEventListener('click', () => {
+  const btn = container.querySelector('.column-title');
+
+  btn.addEventListener('click', () => {
     const isCollapsed = container.classList.contains('collapsed');
 
     if (isCollapsed) {
       // Expand: remove collapsed, CSS mobile-reveal animation fires
       container.classList.remove('collapsed');
+      btn.setAttribute('aria-expanded', 'true');
     } else {
       // Collapse: animate out first, then hide
       const body = container.querySelector('.aside-body, .main-body');
       container.classList.add('is-collapsing');
+      btn.setAttribute('aria-expanded', 'false');
       body.addEventListener('animationend', () => {
         container.classList.add('collapsed');
         container.classList.remove('is-collapsing');
@@ -112,14 +127,18 @@ if (!isMobile) {
   lightbox.className = 'lightbox';
   lightbox.setAttribute('aria-modal', 'true');
   lightbox.setAttribute('role', 'dialog');
+  lightbox.setAttribute('aria-label', 'Photo viewer');
   lightbox.innerHTML = `
-    <button class="lightbox-close" aria-label="Close">&#x2715;</button>
+    <button class="lightbox-close" aria-label="Close photo viewer">&#x2715;</button>
     <div class="lightbox-inner"></div>
   `;
   document.body.appendChild(lightbox);
 
   const lightboxInner = lightbox.querySelector('.lightbox-inner');
   const closeBtn      = lightbox.querySelector('.lightbox-close');
+
+  // Track which element had focus before lightbox opened, to restore it on close
+  let previouslyFocused = null;
 
   function openLightbox(item) {
     lightboxInner.innerHTML = '';
@@ -160,6 +179,10 @@ if (!isMobile) {
 
     lightbox.classList.add('open');
     document.body.style.overflow = 'hidden';
+
+    // Move focus into the lightbox
+    previouslyFocused = document.activeElement;
+    closeBtn.focus();
   }
 
   function closeLightbox() {
@@ -167,7 +190,25 @@ if (!isMobile) {
     document.body.style.overflow = '';
     // Brief delay before clearing so fade-out plays
     setTimeout(() => { lightboxInner.innerHTML = ''; }, 200);
+    // Restore focus to the element that opened the lightbox
+    if (previouslyFocused) previouslyFocused.focus();
   }
+
+  // Focus trap: keep Tab cycling within the lightbox while it's open
+  lightbox.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('open') || e.key !== 'Tab') return;
+    const focusable = [...lightbox.querySelectorAll(
+      'button, video, [tabindex]:not([tabindex="-1"])'
+    )];
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last  = focusable[focusable.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
+    }
+  });
 
   // Photo items: zoom cursor + click to open
   document.querySelectorAll('.photo-item').forEach(item => {

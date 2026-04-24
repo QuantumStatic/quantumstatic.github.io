@@ -26,6 +26,8 @@
 </head>
 <body>
 
+  <a href="#experience" class="skip-link">Skip to content</a>
+
   <header class="site-header">
     <div class="header-inner">
       <a href="/" class="site-name">Utkarsh Jain</a>
@@ -80,7 +82,7 @@
 
       <!-- Left: Experience → Projects → Skills -->
       <div class="split-main">
-        <p class="column-title">Work<span class="column-chevron" aria-hidden="true">&#9654;</span></p>
+        <button class="column-title" aria-expanded="true">Work<span class="column-chevron" aria-hidden="true">&#9654;</span></button>
         <div class="main-body">
 
         <!-- Experience -->
@@ -93,7 +95,7 @@
               <span class="role-period">Oct 2025 – Present</span>
             </div>
             <div class="role-title">Machine Learning Engineer &middot; New York, NY</div>
-            <ul>
+            <ul role="list">
               <li>Architected a multi-strategy retrieval layer — semantic search, keyword search, a hierarchical page index agents traverse to locate optimal sections, and an n-gram document graph for cross-document relationship discovery — because no single retrieval method works for everything</li>
               <li>Report Writing Agent that takes a table of contents, finds everything relevant across the document store, and writes section by section — 70+ pages at 92% F1</li>
               <li>Engineering Drawing Analysis Agent that reads technical drawings the way an expert would — ignoring most of it, locking onto the sections that matter — 93% recall on finding the right specifications</li>
@@ -113,7 +115,7 @@
                   <div class="role-title">Machine Learning Engineer &middot; New York, NY</div>
                   <span class="role-period">May 2025 – Oct 2025</span>
                 </div>
-                <ul>
+                <ul role="list">
                   <li>Legal documents don't have a schema — emails, invoices, and court filings each arrive in their own format. Built an extraction engine that maps all of them to structured data with custom schemas, so downstream analysis actually has something to work with</li>
                   <li>Matter Intelligence: a context engineering system that surfaces the right information at the right time for legal review — cut document review from weeks to hours by making sure the model always has what it needs to reason, not just everything it might need</li>
                 </ul>
@@ -123,7 +125,7 @@
                   <div class="role-title">Machine Learning Engineer Intern &middot; New York, NY</div>
                   <span class="role-period">Feb 2025 – May 2025</span>
                 </div>
-                <ul>
+                <ul role="list">
                   <li>Built a self-healing code agent — it runs its own output, catches its own errors, and fixes them before handing anything back; near-zero hallucinations because it doesn't stop until the code actually works</li>
                 </ul>
               </div>
@@ -136,7 +138,7 @@
               <span class="role-period">Sep 2024 – Dec 2024</span>
             </div>
             <div class="role-title">Course Assistant · Introduction to Machine Learning &middot; New York, NY</div>
-            <ul>
+            <ul role="list">
               <li>Held weekly office hours and graded assignments for a 120-student graduate ML course</li>
             </ul>
           </div>
@@ -147,7 +149,7 @@
               <span class="role-period">Jun 2024 – Aug 2024</span>
             </div>
             <div class="role-title">Machine Learning Engineer Intern &middot; New York, NY</div>
-            <ul>
+            <ul role="list">
               <li>Most document ingestion stops at text — built a multimodal pipeline that extracts insights from images, charts, and diagrams inside non-scannable documents, because that's where the information actually lives</li>
               <li>Curated an 800K+ point training dataset from scratch, building the cleaning and mining pipelines to get there — because a model is only as good as what you train it on</li>
               <li>Ran a head-to-head benchmark of Pinecone vs. Qdrant at scale with synthetic data, measuring recall and query latency under production-representative load — the kind of due diligence that makes a technology decision defensible</li>
@@ -160,7 +162,7 @@
               <span class="role-period">Sep 2023 – May 2024</span>
             </div>
             <div class="role-title">Grader · Basic Algorithms &middot; New York, NY</div>
-            <ul>
+            <ul role="list">
               <li>Designed rubrics and graded assignments for 120 undergrads in algorithms — complexity analysis, graph algorithms, dynamic programming</li>
             </ul>
           </div>
@@ -171,7 +173,7 @@
               <span class="role-period">Jul 2021 – Mar 2022</span>
             </div>
             <div class="role-title">Industrial Placement Trainee &middot; Hong Kong</div>
-            <ul>
+            <ul role="list">
               <li>Automated APAC portfolio management workflows in Python, saving ~200 man-hours</li>
               <li>Revamped a legacy RPG API with Node.js and performed network load testing with JMeter</li>
             </ul>
@@ -599,7 +601,7 @@
 
       <!-- Right: sticky identity panel -->
       <aside class="split-aside">
-        <p class="column-title">About me<span class="column-chevron" aria-hidden="true">&#9654;</span></p>
+        <button class="column-title" aria-expanded="false">About me<span class="column-chevron" aria-hidden="true">&#9654;</span></button>
         <div class="aside-body">
           <div class="identity-photo">
             <img src="assets/profile-picture/IMG_2242.jpg" alt="Utkarsh Jain" />

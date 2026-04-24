@@ -5,6 +5,25 @@
   padding: 0;
 }
 
+/* ── Skip navigation link ───────────────────────────── */
+.skip-link {
+  position:        absolute;
+  top:             -100%;
+  left:            1rem;
+  z-index:         1000;
+  padding:         0.5rem 1rem;
+  background:      var(--accent);
+  color:           #fff;
+  font-size:       0.875rem;
+  font-weight:     600;
+  border-radius:   4px;
+  text-decoration: none;
+  transition:      top 150ms ease;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
 /* ── Typed custom properties — enables CSS to interpolate them ── */
 /* @property tells the browser each token is a <color>, so        */
 /* transitions on :root actually animate the variable itself,     */
@@ -91,13 +110,17 @@ body {
   padding:        0 2rem;
   z-index:        10;
   opacity:        0;
+  visibility:     hidden;           /* hides from keyboard nav when invisible */
   pointer-events: none;
-  transition:     opacity 200ms ease;
+  /* opacity fades; visibility delays 200ms on hide so it waits for fade-out */
+  transition:     opacity 200ms ease, visibility 0s linear 200ms;
 }
 
 .site-header.visible {
   opacity:        1;
+  visibility:     visible;          /* becomes visible immediately on show */
   pointer-events: auto;
+  transition:     opacity 200ms ease, visibility 0s linear 0ms;
 }
 
 .header-inner {
@@ -330,6 +353,20 @@ html[data-theme="dark"] .icon-sun   { display: block; }
   letter-spacing: -0.02em;
   color:          var(--text);
   padding:        1.5rem 0 0.75rem;
+  /* button reset — visually identical to the old <p> */
+  background:     none;
+  border:         none;
+  cursor:         default;
+  text-align:     left;
+  width:          100%;
+  font-family:    var(--font);
+  display:        block;
+}
+
+.column-title:focus-visible {
+  outline:        2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius:  2px;
 }
 
 .column-chevron { display: none; } /* shown only on mobile via media query */
@@ -752,7 +789,11 @@ html[data-theme="dark"] .icon-sun   { display: block; }
   line-height:     1;
 }
 
-.lightbox-close:hover { background: rgba(255, 255, 255, 0.25); }
+.lightbox-close:hover        { background: rgba(255, 255, 255, 0.25); }
+.lightbox-close:focus-visible {
+  outline:        2px solid rgba(255, 255, 255, 0.85);
+  outline-offset: 3px;
+}
 
 /* ── Contact ────────────────────────────────────────── */
 .contact {
@@ -811,7 +852,7 @@ html[data-theme="dark"] .icon-sun   { display: block; }
     display:         flex;
     justify-content: space-between;
     align-items:     center;
-    cursor:          pointer;
+    cursor:          pointer; /* override default:none from base */
     border-bottom:   1px solid var(--border);
     padding-bottom:  0.6rem;
     margin-bottom:   0;
