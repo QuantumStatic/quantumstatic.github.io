@@ -189,7 +189,7 @@
             <summary>
               <div class="category-left">
                 <span class="category-name">Machine Learning &amp; AI</span>
-                <span class="category-count">11 projects</span>
+                <span class="category-count">15 projects</span>
               </div>
               <span class="category-arrow">&#9654;</span>
             </summary>
@@ -210,7 +210,7 @@
                   <span class="project-institution">NYU</span>
                 </div>
                 <p class="project-hook">The strongest predictor of NYC rent isn't bedrooms — it's bathrooms. Scraped StreetEasy and Zillow, pulled in census data, and let the model settle it.</p>
-                <p class="project-summary">End-to-end pipeline scraping StreetEasy + Zillow, merged with census data; XGBoost + NN regressors predicting NYC apartment prices.</p>
+                <p class="project-summary">End-to-end pipeline scraping StreetEasy + Zillow, merged with census data; XGBoost + NN regressors hit 90% accuracy predicting NYC apartment prices — model also flags apartments priced significantly above or below what their features justify.</p>
                 <a class="project-link" href="https://github.com/abhishekmahajan98/rent-raja" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
               </div>
               <div class="project-item">
@@ -237,7 +237,7 @@
                   <span class="project-institution">CityU</span>
                 </div>
                 <p class="project-hook">Getting a drone across a city without hitting anything is harder than it looks. Built the path planner — and the logic that actually flies it.</p>
-                <p class="project-summary">A* path planning with multiple heuristics for autonomous drone navigation in a simulated urban environment.</p>
+                <p class="project-summary">Iterated A* chains through an arbitrary waypoint sequence rather than a single goal — enabling multi-leg flight plans through a 2.5D urban obstacle map; benchmarked 10 heuristics to find the most efficient strategy.</p>
                 <a class="project-link" href="https://github.com/QuantumStatic/CollegeWork/tree/main/Artificial%20Intelligence/Drone%20Motion%20Planning%20-%20A-Star" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
               </div>
               <div class="project-item">
@@ -294,6 +294,40 @@
                 <p class="project-summary">RoBERTa bias detector (89% acc, 0.88 AUC-ROC) + T5 paraphraser trained with a novel loss combining modified KL divergence, cosine similarity, and cross-entropy — no labelled debiased text required; validated by human survey across 15 nationalities.</p>
                 <a class="project-link" href="https://github.com/QuantumStatic/CollegeWork/tree/main/Machine%20Learning/Debiasing%20News%20Articles%20-%20FYP" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
               </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Night Scene Object Recognition — DCGAN + Faster R-CNN</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">What if the detector can't see in the dark? Used one AI to brighten the image before the other AI looked at it.</p>
+                <p class="project-summary">Research study on using DCGAN image enhancement + Faster R-CNN for object detection in low-light conditions.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Cosine Dissimilarity Web Crawler</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">A web crawler that refuses to read pages saying the same thing — even when the URLs look completely different. It understands meaning, not just addresses.</p>
+                <p class="project-summary">Near-duplicate detection via cosine dissimilarity on SentenceTransformer embeddings — pages semantically too close to already-crawled content are rejected before entering the frontier, so the resulting index stays topically diverse rather than redundant.</p>
+                <a class="project-link" href="https://github.com/QuantumStatic/CollegeWork/tree/main/Information%20Retrieval/Cosine%20Dissimilarity%20Web%20Crawler" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Neural Search Pipeline with Embedding-Based Cluster Sharding</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">Why search the whole library when you can route the question to the one shelf that matters? Built the system that decides which shelf.</p>
+                <p class="project-summary">Dense embeddings &rarr; PCA &rarr; UMAP &rarr; 16-cluster sharding; queries routed to a single shard rather than scanning the full corpus.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">AWS Dining Concierge Chatbot</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">A restaurant recommendation chatbot — built entirely out of cloud services that only exist for the split second they're answering you.</p>
+                <p class="project-summary">Fully serverless restaurant chatbot: Lex v2 &rarr; 3 Lambdas &rarr; DynamoDB + ElasticSearch, seeded by a custom Yelp scraper.</p>
+                <a class="project-link" href="https://github.com/QuantumStatic/CloudComputingHW1" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              </div>
               </div>
             </div>
           </details>
@@ -303,7 +337,7 @@
             <summary>
               <div class="category-left">
                 <span class="category-name">Computer Vision</span>
-                <span class="category-count">4 projects</span>
+                <span class="category-count">8 projects</span>
               </div>
               <span class="category-arrow">&#9654;</span>
             </summary>
@@ -343,6 +377,42 @@
                 </div>
                 <p class="project-hook">What if the detector can't see in the dark? Used one AI to brighten the image before the other AI looked at it.</p>
                 <p class="project-summary">Research study on using DCGAN image enhancement + Faster R-CNN for object detection in low-light conditions.</p>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Deepfake Detection with Vision Transformer</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">Can an AI spot a face that was never real? Pitted two vision models head-to-head on a custom deepfake dataset to find out.</p>
+                <p class="project-summary">Fine-tuned ViT and DINO transformers on a custom deepfake dataset; controlled ablation across activations and dataset splits measuring accuracy, F1, and ROC-AUC.</p>
+                <a class="project-link" href="https://github.com/QuantumStatic/CollegeWork/tree/main/Machine%20Learning/Deepfake%20Detection%20-%20ViT" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">SVM Face Detection Classifier</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">A straight line or a curved one — which shape separates faces from not-faces better? Ran the experiment to find out.</p>
+                <p class="project-summary">Linear and kernel SVM classifiers trained for face patch detection.</p>
+                <a class="project-link" href="https://github.com/QuantumStatic/CollegeWork/tree/main/Machine%20Learning/SVM%20Face%20Detection" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Image Segmentation via Clustering</span>
+                  <span class="project-institution">CityU</span>
+                </div>
+                <p class="project-hook">Treat every pixel as a dot. Group the dots that look alike. The image repaints itself in the process.</p>
+                <p class="project-summary">K-Means pixel clustering for image segmentation with visual comparison across different k values.</p>
+                <a class="project-link" href="https://github.com/QuantumStatic/CollegeWork/tree/main/Machine%20Learning/Image%20Segmentation%20-%20Clustering" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Serverless AI Photo Search (AWS Rekognition + OpenSearch)</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">Upload a photo of your dog. Search for 'dog'. It shows up. You never labelled it — the AI did.</p>
+                <p class="project-summary">S3 upload &rarr; Lambda &rarr; Rekognition auto-labels &rarr; OpenSearch index; fully event-driven keyword photo search.</p>
+                <a class="project-link" href="https://github.com/QuantumStatic/CloudComputingHW3" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
               </div>
               </div>
             </div>
@@ -402,7 +472,7 @@
             <summary>
               <div class="category-left">
                 <span class="category-name">Systems &amp; Algorithms</span>
-                <span class="category-count">8 projects</span>
+                <span class="category-count">10 projects</span>
               </div>
               <span class="category-arrow">&#9654;</span>
             </summary>
@@ -477,6 +547,23 @@
                 <p class="project-summary">Every user action is its own Command class; 15+ custom exception classes make every invalid state explicit. Phase 3 adds team ranking by available capacity to suggest the best fit for a project.</p>
                 <a class="project-link" href="https://github.com/QuantumStatic/CollegeWork/tree/main/Software%20Engineering/Company%20Management%20System%20-%20Command%20Pattern" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
               </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">BM25 Query Processor with C++20 Coroutine Generators</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">A search engine that sifts through 3.2 million documents — but only reads the ones it absolutely has to. The trick? Making C++ pretend it's Python.</p>
+                <p class="project-summary">C++20 coroutine-based lazy generator for streaming inverted lists; conjunctive merge and MaxScore pruning driven by compiler-managed coroutine state.</p>
+                <a class="project-link" href="https://github.com/QuantumStatic/CollegeWork/tree/main/Information%20Retrieval/BM25%20Query%20Processor%20-%20Coroutines" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Inverted Index Builder over MS MARCO (3.2M Docs)</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">Built a searchable index over 3.2 million documents in C++ — without ever loading more than a fraction of them into memory.</p>
+                <p class="project-summary">C++23 threshold-based intermediate dump-and-merge index construction over 3.2M MARCO documents; memory-bounded at any corpus size.</p>
+              </div>
               </div>
             </div>
           </details>
@@ -486,7 +573,7 @@
             <summary>
               <div class="category-left">
                 <span class="category-name">Cloud &amp; DevOps</span>
-                <span class="category-count">3 projects</span>
+                <span class="category-count">4 projects</span>
               </div>
               <span class="category-arrow">&#9654;</span>
             </summary>
@@ -518,6 +605,15 @@
                 <p class="project-hook">Upload a photo of your dog. Search for 'dog'. It shows up. You never labelled it — the AI did.</p>
                 <p class="project-summary">S3 upload &rarr; Lambda &rarr; Rekognition auto-labels &rarr; OpenSearch index; fully event-driven keyword photo search.</p>
                 <a class="project-link" href="https://github.com/QuantumStatic/CloudComputingHW3" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              </div>
+              <div class="project-item">
+                <div class="project-item-header">
+                  <span class="project-title">Food Image Classifier — Transfer Learning + Kubernetes Auto-Scaling</span>
+                  <span class="project-institution">NYU</span>
+                </div>
+                <p class="project-hook">Trained an AI to recognise food. Put it on the internet. Threw thousands of requests at it. Watched what broke — then scaled it.</p>
+                <p class="project-summary">Transfer learning on Food-11, deployed on Kubernetes with HPA, load-tested with Siege — full train-deploy-scale-observe loop.</p>
+                <a class="project-link" href="https://github.com/QuantumStatic/CollegeWork/tree/main/Machine%20Learning/Food%20Classifier%20-%20K8s%20Autoscaling" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
               </div>
               </div>
             </div>
@@ -557,7 +653,7 @@
                   <span class="project-institution">CityU</span>
                 </div>
                 <p class="project-hook">A restaurant booking and ordering system built like a real product — two versioned releases, bug reports, and a full test suite.</p>
-                <p class="project-summary">Full Java desktop app for restaurant booking, ordering, and payments — full SDLC with two releases.</p>
+                <p class="project-summary">Full Java desktop app for restaurant booking, ordering, and payments — implemented as a Singleton so one shared instance manages all branches; BranchTimeManager enforces operating hours with slot-level conflict detection; full SDLC across two releases.</p>
                 <a class="project-link" href="https://github.com/QuantumStatic/CollegeWork/tree/main/Full%20Stack/HotMeals%20Restaurant%20System" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
               </div>
               <div class="project-item">
