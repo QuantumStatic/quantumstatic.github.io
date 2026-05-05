@@ -298,6 +298,42 @@ html[data-theme="dark"] .icon-sun   { display: block; }
   color:       var(--text);
 }
 
+/* ── Hero contact icons ─────────────────────────────── */
+.hero-links {
+  display:     flex;
+  align-items: center;
+  gap:         1.5rem;
+  margin-top:  1.25rem;
+}
+
+.hero-link {
+  display:         flex;
+  align-items:     center;
+  gap:             0.4rem;
+  color:           var(--muted);
+  text-decoration: none;
+  font-size:       0.875rem;
+  font-weight:     500;
+  transition:      color 150ms ease;
+}
+
+.hero-link svg {
+  width:  18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.hero-link:hover,
+.hero-link:focus-visible {
+  color: var(--text);
+}
+
+.hero-link:focus-visible {
+  outline:        2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius:  2px;
+}
+
 /* ── Split layout ───────────────────────────────────── */
 .split-layout {
   display:     flex;
