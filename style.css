@@ -842,21 +842,11 @@ html[data-theme="dark"] .icon-sun   { display: block; }
   flex-wrap:       wrap;
 }
 
-.contact a {
-  font-size:       0.9375rem;
-  color:           var(--text);
-  text-decoration: none;
-  font-weight:     500;
-  transition:      color 150ms ease;
+/* Centre the icon row inside the footer container */
+.contact .hero-links {
+  justify-content: center;
 }
 
-.contact a:hover        { color: var(--accent); }
-.contact a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-.dot {
-  color:       var(--border);
-  user-select: none;
-}
 
 /* ── Mobile ─────────────────────────────────────────── */
 @media (max-width: 600px) {
