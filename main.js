@@ -65,10 +65,12 @@ if (reducedMotion) {
 const header   = document.querySelector('.site-header');
 const heroName = document.querySelector('.hero h1');
 
-new IntersectionObserver(
-  ([entry]) => header.classList.toggle('visible', !entry.isIntersecting),
-  { threshold: 0 }
-).observe(heroName);
+if (header && heroName) {
+  new IntersectionObserver(
+    ([entry]) => header.classList.toggle('visible', !entry.isIntersecting),
+    { threshold: 0 }
+  ).observe(heroName);
+}
 
 /* ── Mobile: collapsible "About me" and "Work" panels ──────────── */
 if (isMobile) {

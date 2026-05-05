@@ -289,11 +289,15 @@ if (webFiles.length === 0) {
     const location = meta.location || '';
     const date     = meta.date     || '';
 
+    // Build a meaningful alt string from available metadata
+    const altParts = [location, date].filter(Boolean);
+    const alt      = altParts.join(', ');
+
     const media = isVideo
       ? `${indent}  <video autoplay muted loop playsinline>\n` +
         `${indent}    <source src="assets/photos/${f}" type="video/mp4" />\n` +
         `${indent}  </video>`
-      : `${indent}  <img src="assets/photos/${f}" alt="" loading="lazy" />`;
+      : `${indent}  <img src="assets/photos/${f}" alt="${alt}" loading="lazy" />`;
 
     const overlay = (location || date)
       ? `\n${indent}  <figcaption class="photo-meta">\n` +
