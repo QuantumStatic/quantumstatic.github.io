@@ -462,6 +462,14 @@ html[data-theme="dark"] .icon-sun   { display: block; }
 }
 
 /* ── Grouped roles (same employer, multiple titles) ─── */
+
+/* Hide the parent date range on desktop — child entries already show their
+   own dates inline, so the company-level range is redundant noise.
+   Kept visible on mobile (≤600 px) where child dates wrap below the title. */
+.role-group > .role-header .role-period {
+  display: none;
+}
+
 .role-entries {
   margin-top:   0.9rem;
   border-left:  2px solid var(--border);
@@ -965,6 +973,12 @@ html[data-theme="dark"] .icon-sun   { display: block; }
   .role-entry-header {
     flex-direction: column;
     gap:            0.1rem;
+  }
+
+  /* On mobile, child dates wrap below their titles — bring back the
+     parent date range as a quick summary for the whole role group. */
+  .role-group > .role-header .role-period {
+    display: inline;
   }
 
   .skill-row {
