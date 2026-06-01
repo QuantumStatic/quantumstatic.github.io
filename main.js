@@ -223,6 +223,91 @@ if (!isMobile) {
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 }
 
+/* ── Easter egg: Connect 4 ──────────────────────────────────────── */
+// Four triggers, one toast. Works on desktop + touch.
+// 1. Tap the profile photo 4 times
+// 2. Type "play" anywhere on the page (keyboard)
+// 3. Click the "ps. i also like to click photos" label
+// 4. Konami code ↑↑↓↓←→←→BA (keyboard)
+
+const GAME_URL = 'https://connect4-65t.pages.dev';
+
+function showGameToast(msg) {
+  // Clear any existing toast first
+  const prev = document.querySelector('.easter-toast');
+  if (prev) { clearTimeout(prev._hideTimer); prev.remove(); }
+
+  const toast = document.createElement('div');
+  toast.className = 'easter-toast';
+  toast.innerHTML = `${msg} <a href="${GAME_URL}" target="_blank" rel="noopener noreferrer">play connect 4 ↗</a>`;
+  document.body.appendChild(toast);
+
+  // Double rAF ensures transition plays after insertion
+  requestAnimationFrame(() => requestAnimationFrame(() => toast.classList.add('show')));
+
+  toast._hideTimer = setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 400);
+  }, 7000);
+}
+
+// 1. Profile photo × 4 taps/clicks
+const identityPhoto = document.querySelector('.identity-photo');
+if (identityPhoto) {
+  let tapCount = 0, tapTimer;
+  identityPhoto.style.cursor = 'pointer';
+  identityPhoto.addEventListener('click', () => {
+    tapCount++;
+    clearTimeout(tapTimer);
+    if (tapCount >= 4) {
+      tapCount = 0;
+      showGameToast('four taps. you found it —');
+    } else {
+      tapTimer = setTimeout(() => { tapCount = 0; }, 1500);
+    }
+  });
+}
+
+// 2. Type "play" anywhere (keyboard only — desktop easter egg)
+let keyBuffer = '';
+let keyBufferTimer;
+document.addEventListener('keydown', e => {
+  // Ignore when typing in an input/textarea
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  keyBuffer = (keyBuffer + e.key.toLowerCase()).slice(-4);
+  clearTimeout(keyBufferTimer);
+  if (keyBuffer === 'play') {
+    keyBuffer = '';
+    showGameToast('you typed "play" —');
+  } else {
+    keyBufferTimer = setTimeout(() => { keyBuffer = ''; }, 2000);
+  }
+});
+
+// 3. Click the "ps." photos label
+const photosLabel = document.querySelector('.photos-label');
+if (photosLabel) {
+  photosLabel.style.cursor = 'pointer';
+  photosLabel.addEventListener('click', () => {
+    showGameToast('ps. i also made this —');
+  });
+}
+
+// 4. Konami code: ↑ ↑ ↓ ↓ ← → ← → B A
+const KONAMI = [
+  'ArrowUp','ArrowUp','ArrowDown','ArrowDown',
+  'ArrowLeft','ArrowRight','ArrowLeft','ArrowRight',
+  'b','a'
+];
+let konamiIdx = 0;
+document.addEventListener('keydown', e => {
+  konamiIdx = (e.key === KONAMI[konamiIdx]) ? konamiIdx + 1 : (e.key === KONAMI[0] ? 1 : 0);
+  if (konamiIdx === KONAMI.length) {
+    konamiIdx = 0;
+    showGameToast('↑↑↓↓←→←→BA —');
+  }
+});
+
 /* ── Project accordion ──────────────────────────────────────────── */
 // CSS grid-template-rows handles the animation (GPU-friendly).
 // is-expanding / is-collapsing classes hold the grid at 0fr during
